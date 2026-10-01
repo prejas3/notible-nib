@@ -1,0 +1,852 @@
+[
+ {
+  "id": "core:commands-and-shortcuts",
+  "title": "Commands and shortcuts",
+  "source": "core",
+  "state": "enabled",
+  "summary": "| Entry | Creates |\r\n|---|---|\r\n| New note | A note |\r\n| Workspace | A workspace — a dashboard over several projects |\r\n| Folder | A plain container |\r\n| Whiteboard | A canvas |\r\n| Project | A project with task tabs |\r\n| Task, Issue | A work item |",
+  "keywords": "commands shortcuts keyboard hotkeys plus menu slash menu ctrl f1 keys",
+  "sections": [
+   {
+    "heading": "The + menu",
+    "slug": "the-menu",
+    "text": "| Entry | Creates |\n|---|---|\n| New note | A note |\n| Workspace | A workspace — a dashboard over several projects |\n| Folder | A plain container |\n| Whiteboard | A canvas |\n| Project | A project with task tabs |\n| Task, Issue | A work item |\n\nPlugins you turn on can add entries, such as **Manuscript** from Typewriter. The same entries are at the top of a row's right-click menu, to create something directly inside that container."
+   },
+   {
+    "heading": "The / menu",
+    "slug": "the-menu-2",
+    "text": "Inside a note, **/** inserts blocks — see [Writing notes](help:writing-notes#blocks-from-the-menu). It also lists **Create project**, **Create task**, **Create issue** and **Create whiteboard**, which create a new item without leaving the keyboard."
+   },
+   {
+    "heading": "Keyboard shortcuts",
+    "slug": "keyboard-shortcuts",
+    "text": "| Keys | Does |\n|---|---|\n| Ctrl+N | New note |\n| Alt+Space | Search |\n| F1 | Help |\n| Ctrl+, | Settings |\n| Ctrl+Z / Ctrl+Y | Undo / redo |\n| Ctrl+Alt+F | Add a footnote |\n| [[ | Link to another note |\n| Ctrl+click | Open a link |\n| Alt+← | Back to the previous note |\n| / | Insert a block |\n\nPlugins can add their own shortcuts. See and change them in **Settings → Hotkeys**."
+   }
+  ],
+  "helpPageId": "commands-and-shortcuts"
+ },
+ {
+  "id": "core:containers",
+  "title": "Organising your work",
+  "source": "core",
+  "state": "enabled",
+  "summary": "Notible has three kinds of containers. They can all hold notes and other items, but each is built for something different.",
+  "keywords": "folder project workspace dashboard container tree move order structure",
+  "sections": [
+   {
+    "heading": "Organising your work",
+    "slug": "",
+    "text": "Notible has three kinds of containers. They can all hold notes and other items, but each is built for something different.\n\n![A folder, and a workspace holding projects, in the sidebar](help/containers-tree.webp)"
+   },
+   {
+    "heading": "Folders",
+    "slug": "folders",
+    "text": "A folder is a general-purpose container. It imposes no structure: put notes, tasks, whiteboards or other folders in it, in any mix. Use a folder when you just want to keep things together."
+   },
+   {
+    "heading": "Projects",
+    "slug": "projects",
+    "text": "A project is built for managing work. It keeps the information layer — your notes — separate from the data you collect: tasks, issues and the views over them, such as a board, a table or a calendar.\n\nA project shows its data in tabs. Choose which tabs it has under **Modules** at the right of the tab strip; turning a tab off hides it, and the data stays.\n\n![A project's task board](help/project-board.webp)"
+   },
+   {
+    "heading": "Workspaces",
+    "slug": "workspaces",
+    "text": "A workspace is a container and also a dashboard. It lets you manage several other spaces, such as projects, from one place: an overview of their progress, a table across all of them, and a shared whiteboard.\n\n![A workspace overview](help/workspace-overview.webp)"
+   },
+   {
+    "heading": "Which one should I use?",
+    "slug": "which-one-should-i-use",
+    "text": "| | Use it for | What you get |\n|---|---|---|\n| Folder | Keeping related things together | A plain container, no rules |\n| Project | Managing one piece of work | Notes plus tasks, issues and views in tabs |\n| Workspace | Overseeing several projects | A dashboard across everything inside it |\n\nYou can nest them: a workspace can hold projects, and a project can hold folders."
+   },
+   {
+    "heading": "Moving and ordering",
+    "slug": "moving-and-ordering",
+    "text": "Drag a row in the sidebar onto another row to put it inside, or near a row's top edge to place it above. **Move to…** above an open item does the same from a list. With a container open, **+** creates new things inside it; the menu says where, and **Top level instead** puts them at the top.\n\n![Moving a note with Move to…](help/move-to.webm)"
+   }
+  ],
+  "helpPageId": "containers"
+ },
+ {
+  "id": "core:finding-things",
+  "title": "Finding things",
+  "source": "core",
+  "state": "enabled",
+  "summary": "Click the magnifier next to **+**, or press **Alt+Space**, and type. Results come in groups:",
+  "keywords": "search find filter tag date kind anywhere results settings help",
+  "sections": [
+   {
+    "heading": "Search",
+    "slug": "search",
+    "text": "Click the magnifier next to **+**, or press **Alt+Space**, and type. Results come in groups:\n\n- **Settings** — the settings screen that matches, one click away;\n- **Help** — the page and heading of this Help that matches;\n- **Notes** — every item whose title or text matches."
+   },
+   {
+    "heading": "Filters",
+    "slug": "filters",
+    "text": "Under the search box, narrow the notes down by:\n\n- **Kind** — only tasks, only notes, and so on;\n- **Anywhere** — only inside one workspace, folder or project;\n- **Tag** — only items with a given tag;\n- **Dates** — only items changed between two dates.\n\n**Clear filters** resets them."
+   },
+   {
+    "heading": "Backlinks",
+    "slug": "backlinks",
+    "text": "At the bottom of a note, **Backlinks** lists every note that links to it with `[[its title]]`. See [Search and backlinks](help:plugin-search)."
+   }
+  ],
+  "helpPageId": "finding-things"
+ },
+ {
+  "id": "core:getting-started",
+  "title": "Getting started",
+  "source": "core",
+  "state": "enabled",
+  "summary": "Notible is a notes app that keeps your work on your own computer. It starts as a place to write, and grows into projects, tasks and boards when you need them — most of that comes from plugins you can turn on or off.",
+  "keywords": "start first note new create plus slash menu sidebar settings help f1 search",
+  "sections": [
+   {
+    "heading": "Getting started",
+    "slug": "",
+    "text": "Notible is a notes app that keeps your work on your own computer. It starts as a place to write, and grows into projects, tasks and boards when you need them — most of that comes from plugins you can turn on or off."
+   },
+   {
+    "heading": "Your first note",
+    "slug": "your-first-note",
+    "text": "Press **+** at the top of the sidebar and choose **New note**, or press **Ctrl+N**. Type a title, then write underneath it. Notible saves as you type; there is no Save button."
+   },
+   {
+    "heading": "The + menu",
+    "slug": "the-menu",
+    "text": "**+** creates everything that lives in your sidebar: notes, folders, projects, workspaces, whiteboards, tasks and issues. Each item in the menu says in one line what it is for. Folders, projects and workspaces are containers — each is meant for something different, explained in [Organising your work](help:containers).\n\n![The + menu](help/plus-menu.webp)"
+   },
+   {
+    "heading": "The / menu",
+    "slug": "the-menu-2",
+    "text": "Inside a note, type **/** to open a menu of blocks: headings, bullet and numbered lists, checklists, quotes, code, columns, dividers and diagrams. Keep typing to filter the list, then press Enter.\n\n![Adding a checklist from the / menu](help/slash-menu.webm)\n\nSome blocks come from plugins, and appear only while that plugin is on."
+   },
+   {
+    "heading": "Where things are",
+    "slug": "where-things-are",
+    "text": "- **The sidebar** on the left is your tree of notes and containers, under the heading **All notes**.\n- **Search** is the magnifier next to **+** (or **Alt+Space**). It finds notes, settings and pages of this Help.\n- **Help** — what you are reading — is at the bottom of the sidebar, or press **F1** anywhere.\n- **Settings** is at the bottom of the sidebar: appearance, language, shortcuts, plugins, backups and updates.\n\n![Search finds pages of this Help too](help/help-search.webp)"
+   }
+  ],
+  "helpPageId": "getting-started"
+ },
+ {
+  "id": "core:kinds-of-items",
+  "title": "Kinds of items",
+  "source": "core",
+  "state": "enabled",
+  "summary": "Besides containers, the **+** menu creates items. Each kind is a note underneath — you can always write in it — plus the fields that kind needs, shown in the Properties panel on the right.",
+  "keywords": "note task issue whiteboard manuscript item type status priority due severity recurrence reminder",
+  "sections": [
+   {
+    "heading": "Kinds of items",
+    "slug": "",
+    "text": "Besides containers, the **+** menu creates items. Each kind is a note underneath — you can always write in it — plus the fields that kind needs, shown in the Properties panel on the right."
+   },
+   {
+    "heading": "Notes",
+    "slug": "notes",
+    "text": "Plain writing: meeting notes, ideas, documentation. No required fields. You can still add a one-off property to a single note ([Properties](help:plugin-properties))."
+   },
+   {
+    "heading": "Tasks",
+    "slug": "tasks",
+    "text": "Something to do. Fields include **status** (from triage and backlog through in progress to done), **priority**, **due** and **start** dates, a **reminder**, **recurrence** and tags. Tasks inside a project appear on its board."
+   },
+   {
+    "heading": "Issues",
+    "slug": "issues",
+    "text": "A problem to track, such as a bug. Like a task, but with a **severity** and a status that ends in **resolved** or **closed**."
+   },
+   {
+    "heading": "Whiteboards",
+    "slug": "whiteboards",
+    "text": "A canvas instead of a page: cards, shapes and connectors you arrange freely. See [Whiteboard](help:plugin-whiteboard)."
+   },
+   {
+    "heading": "Which one?",
+    "slug": "which-one",
+    "text": "Write a **note** when you want to record something, a **task** when someone has to do it, an **issue** when something is wrong, and a **whiteboard** when the relationships matter more than the text.\n\nTasks, issues and projects come from [Tasks, Issues and Projects](help:plugin-work-models); plugins can add more kinds, such as a manuscript from [Typewriter](help:plugin-typewriter)."
+   }
+  ],
+  "helpPageId": "kinds-of-items"
+ },
+ {
+  "id": "core:market-plugins",
+  "title": "Market plugins",
+  "source": "core",
+  "state": "enabled",
+  "summary": "Besides the plugins built into Notible, you can install more from the market: **Settings → Plugins → Market**.",
+  "keywords": "market plugin install community official update extension add",
+  "sections": [
+   {
+    "heading": "Market plugins",
+    "slug": "",
+    "text": "Besides the plugins built into Notible, you can install more from the market: **Settings → Plugins → Market**.\n\n- **Official** plugins are published by the Notible developer.\n- **Community** plugins are published by other people and are not reviewed by Notible. You install them at your own risk.\n\nInstalled plugins update from the same screen when a new version is out."
+   },
+   {
+    "heading": "Where to find a plugin's instructions",
+    "slug": "where-to-find-a-plugins-instructions",
+    "text": "Each market plugin documents itself. Open Settings → Plugins, pick the plugin, and read its **Instructions**. This Help covers Notible itself and its built-in plugins.\n\n[Open Settings → Plugins](settings:plugins)"
+   }
+  ],
+  "helpPageId": "market-plugins"
+ },
+ {
+  "id": "core:move-export-delete",
+  "title": "Move, export and delete",
+  "source": "core",
+  "state": "enabled",
+  "summary": "Drag a row in the sidebar onto another row to put it inside; drop it near the top edge of a row to place it above instead. Or use **Move to…** (above an open item, or in a row's right-click menu) and pick where it goes. You can move into folders, projects and notes, but never into the item itself or something inside it.",
+  "keywords": "move trash delete restore recovery backup export download markdown import",
+  "sections": [
+   {
+    "heading": "Move",
+    "slug": "move",
+    "text": "Drag a row in the sidebar onto another row to put it inside; drop it near the top edge of a row to place it above instead. Or use **Move to…** (above an open item, or in a row's right-click menu) and pick where it goes. You can move into folders, projects and notes, but never into the item itself or something inside it.\n\nRight-clicking a row offers the rest: add something inside it, **Rename** (also **F2**, or double-click the row), **Duplicate**, **Version history**, **Open on start** so it opens whenever Notible starts, and delete it. Exports and printing are under **Export and print**."
+   },
+   {
+    "heading": "Export",
+    "slug": "export",
+    "text": "- **Download as Markdown** — the download button above an open item, or its right-click menu, saves it as a .md file.\n- **Export JSON (with children)** — under **Export and print** in the right-click menu, saves an item with everything inside it as one file, to move it to another workspace or hand it to someone.\n- **Print / Save as PDF** — under **Export and print** in the right-click menu."
+   },
+   {
+    "heading": "Import",
+    "slug": "import",
+    "text": "- **Import Markdown** at the bottom of the sidebar turns a .md file into a note.\n- **Import here…** in a container's right-click menu brings an exported JSON file back, inside that container."
+   },
+   {
+    "heading": "Delete and restore",
+    "slug": "delete-and-restore",
+    "text": "The trash button above an item — or **Delete** in its right-click menu — moves it to the trash. Deleting a container moves everything inside it too.\n\nNothing is gone yet. Right after deleting, press **Undo** in the message at the top right. Later, open **Settings → Recovery → Trash**: **Restore** brings an item back where it was, **Delete forever** removes it for good, and **Empty trash** removes everything in the trash."
+   },
+   {
+    "heading": "Backups",
+    "slug": "backups",
+    "text": "Notible backs up your workspace when it starts, and keeps a set number of backups. Make one by hand, restore one, or change how many are kept in **Settings → Recovery**."
+   }
+  ],
+  "helpPageId": "move-export-delete"
+ },
+ {
+  "id": "core:plugin-automations",
+  "title": "Automations",
+  "source": "core",
+  "pluginId": "notible.automations",
+  "state": "enabled",
+  "summary": "Adds an **Automations** tab to projects: rules of the form \"when this happens, do that\". A trigger — an item is created, a property changes, a date is reached, or a schedule — runs actions such as setting a field or sending a notification.",
+  "keywords": "automations rules triggers conditions actions notify recurring schedule plugin",
+  "sections": [
+   {
+    "heading": "Automations",
+    "slug": "",
+    "text": "Adds an **Automations** tab to projects: rules of the form \"when this happens, do that\". A trigger — an item is created, a property changes, a date is reached, or a schedule — runs actions such as setting a field or sending a notification.\n\nEach rule reads as a sentence, can be previewed and run by hand, and every run is written to an execution log. Rules run on your computer only; nothing is sent anywhere.\n\n**Off by default.** Needs [Tasks, Issues and Projects](help:plugin-work-models).\n\n[Open Settings → Plugins](settings:plugins)"
+   }
+  ],
+  "helpPageId": "plugin-automations"
+ },
+ {
+  "id": "core:plugin-calendar",
+  "title": "Calendar integrations",
+  "source": "core",
+  "pluginId": "notible.calendar",
+  "state": "enabled",
+  "summary": "Connects a project's **Calendar** tab to Google or Outlook, so its dated work shows next to your meetings. Sign in and pick calendars under **Connections** in that tab; events from those calendars are read-only.",
+  "keywords": "calendar google outlook sync events reminders connections plugin",
+  "sections": [
+   {
+    "heading": "Calendar integrations",
+    "slug": "",
+    "text": "Connects a project's **Calendar** tab to Google or Outlook, so its dated work shows next to your meetings. Sign in and pick calendars under **Connections** in that tab; events from those calendars are read-only.\n\nIt also turns the reminder set on a local calendar event into a notification when it comes due.\n\n**Off by default.** The Calendar tab itself comes with [Planning](help:plugin-planning). Reading your calendars also needs **Let plugins read your calendars** in Settings → Files & links.\n\n[Open Settings → Plugins](settings:plugins)"
+   }
+  ],
+  "helpPageId": "plugin-calendar"
+ },
+ {
+  "id": "core:plugin-editor-extensions",
+  "title": "Editor extensions",
+  "source": "core",
+  "pluginId": "notible.editor-extensions",
+  "state": "enabled",
+  "summary": "Adds richer blocks to notes: code blocks with syntax highlighting, and **Mermaid diagrams** — flowcharts, sequence diagrams, Gantt charts and more, drawn from text.",
+  "keywords": "editor code blocks syntax highlighting mermaid diagrams flowchart plugin",
+  "sections": [
+   {
+    "heading": "Editor extensions",
+    "slug": "",
+    "text": "Adds richer blocks to notes: code blocks with syntax highlighting, and **Mermaid diagrams** — flowcharts, sequence diagrams, Gantt charts and more, drawn from text.\n\nTo add a diagram, type **/** in a note and pick **Mermaid diagram**. A drawn diagram hides its code; to change it, click the **mermaid · edit** bar above it, or right-click it and choose **Edit code**. The full diagram syntax is on [mermaid.js.org](https://mermaid.js.org).\n\nHover a drawn diagram for its buttons: **Expand** opens it full screen (scroll to zoom, drag to move, Esc to close), **Copy image** copies it as a picture you can paste into mail or a document, and **SVG** / **PNG** save it to a file.\n\n**Changing how a diagram looks.** Settings go at the very top of the diagram's code, between two `---` lines, and travel with the note to every device:\n\n```\n---\nconfig:\n  theme: forest\n  look: handDrawn\n  layout: elk\n---\nflowchart TB\n  A --> B\n```\n\n`theme` can be `default`, `neutral`, `dark`, `forest` or `base`. `look: handDrawn` gives a sketch style. `layout: elk` switches to a second layout engine that often arranges bigger diagrams more neatly. Every option is listed in [Mermaid's configuration docs](https://mermaid.js.org/config/schema-docs/config.html).\n\n**On by default.**\n\n[Open Settings → Plugins](settings:plugins)"
+   }
+  ],
+  "helpPageId": "plugin-editor-extensions"
+ },
+ {
+  "id": "core:plugin-finance",
+  "title": "Finance",
+  "source": "core",
+  "pluginId": "notible.finance",
+  "state": "enabled",
+  "summary": "Adds financial entries (costs and income) and time entries (hours, billable or not, rates, currency) to projects, so you can see the budget left without a spreadsheet.",
+  "keywords": "finance budget costs income time tracking hours billable rates currency plugin",
+  "sections": [
+   {
+    "heading": "Finance",
+    "slug": "",
+    "text": "Adds financial entries (costs and income) and time entries (hours, billable or not, rates, currency) to projects, so you can see the budget left without a spreadsheet.\n\nThe figures appear in a project's **Finance** tab, which comes with [Planning](help:plugin-planning).\n\n**Off by default.** Needs [Properties](help:plugin-properties).\n\n[Open Settings → Plugins](settings:plugins)"
+   }
+  ],
+  "helpPageId": "plugin-finance"
+ },
+ {
+  "id": "core:plugin-import-export",
+  "title": "Import and export",
+  "source": "core",
+  "pluginId": "notible.import-export",
+  "state": "enabled",
+  "summary": "Exports a single note or project — with everything inside it — as one file, and imports such a file back. Use it to move one piece of work to another workspace or hand it to someone, without sharing your whole workspace.",
+  "keywords": "import export json bundle project note share move workspace plugin",
+  "sections": [
+   {
+    "heading": "Import and export",
+    "slug": "",
+    "text": "Exports a single note or project — with everything inside it — as one file, and imports such a file back. Use it to move one piece of work to another workspace or hand it to someone, without sharing your whole workspace.\n\nOnce it is on, pick what to export in Settings → Plugins → **Import and export**. The same export is also in every row's right-click menu, as **Export JSON (with children)**. Whole-workspace backups are a separate feature in Settings → Recovery; see [Move, export and delete](help:move-export-delete).\n\n**Off by default.**\n\n[Open Settings → Plugins](settings:plugins)"
+   }
+  ],
+  "helpPageId": "plugin-import-export"
+ },
+ {
+  "id": "core:plugin-planning",
+  "title": "Planning",
+  "source": "core",
+  "pluginId": "notible.planning",
+  "state": "disabled",
+  "summary": "Adds planning tabs to projects:",
+  "keywords": "planning milestones cycles releases timeline gantt calendar finance dependencies plugin",
+  "sections": [],
+  "helpPageId": "plugin-planning"
+ },
+ {
+  "id": "core:plugin-properties",
+  "title": "Properties",
+  "source": "core",
+  "pluginId": "notible.properties",
+  "state": "enabled",
+  "summary": "Adds the **Properties** panel on the right of every item: status, priority, assignee, dates and any other field its type defines.",
+  "keywords": "properties fields custom property panel status priority assignee date plugin",
+  "sections": [
+   {
+    "heading": "Properties",
+    "slug": "",
+    "text": "Adds the **Properties** panel on the right of every item: status, priority, assignee, dates and any other field its type defines.\n\nIt also lets you add a one-off property to a single item — text, a date, a link, a number or a checkbox — without changing its type. Give one meeting note a \"decision due\" date, and it stays on that note alone.\n\n**On by default.** Turning it off removes the whole side panel, custom properties included.\n\n[Open Settings → Plugins](settings:plugins)"
+   }
+  ],
+  "helpPageId": "plugin-properties"
+ },
+ {
+  "id": "core:plugin-queries",
+  "title": "Embedded queries",
+  "source": "core",
+  "pluginId": "notible.queries",
+  "state": "enabled",
+  "summary": "Lets a note ask a question instead of holding a copy. Type **/** and pick **Live list of matching objects**, then describe what you want — for example, open tasks due in the next week:",
+  "keywords": "queries live list block filter tasks due status notible code block plugin",
+  "sections": [
+   {
+    "heading": "Embedded queries",
+    "slug": "",
+    "text": "Lets a note ask a question instead of holding a copy. Type **/** and pick **Live list of matching objects**, then describe what you want — for example, open tasks due in the next week:\n\n```\ntype: task\nstatus: open\ndue: <= +7d\n```\n\nThe note answers with whatever matches each time you open it. The rows are the real items: clicking one opens it. The block explains every option underneath itself.\n\n**Off by default.** The **/** menu offers this block only while the plugin is on.\n\n[Open Settings → Plugins](settings:plugins)"
+   }
+  ],
+  "helpPageId": "plugin-queries"
+ },
+ {
+  "id": "core:plugin-search",
+  "title": "Search and backlinks",
+  "source": "core",
+  "pluginId": "notible.search",
+  "state": "enabled",
+  "summary": "Adds the **Backlinks** list at the bottom of each note — every note that links to it — and the search support used across the app. See [Finding things](help:finding-things).",
+  "keywords": "search backlinks links activity find tag plugin",
+  "sections": [
+   {
+    "heading": "Search and backlinks",
+    "slug": "",
+    "text": "Adds the **Backlinks** list at the bottom of each note — every note that links to it — and the search support used across the app. See [Finding things](help:finding-things).\n\n**On by default.**\n\n[Open Settings → Plugins](settings:plugins)"
+   }
+  ],
+  "helpPageId": "plugin-search"
+ },
+ {
+  "id": "core:plugin-themes",
+  "title": "Themes",
+  "source": "core",
+  "pluginId": "notible.themes",
+  "state": "enabled",
+  "summary": "Lets you install and switch community themes: style-only packs that change colours, backgrounds, glass effects and animations. You can go back to the built-in Daylight or Midnight at any time.",
+  "keywords": "themes appearance colours background glass style community theme plugin",
+  "sections": [
+   {
+    "heading": "Themes",
+    "slug": "",
+    "text": "Lets you install and switch community themes: style-only packs that change colours, backgrounds, glass effects and animations. You can go back to the built-in Daylight or Midnight at any time.\n\nOnce it is on, pick a theme in Settings → Plugins → **Themes**.\n\n**Off by default.**\n\n[Open Settings → Plugins](settings:plugins)"
+   }
+  ],
+  "helpPageId": "plugin-themes"
+ },
+ {
+  "id": "core:plugin-typewriter",
+  "title": "Typewriter",
+  "source": "core",
+  "pluginId": "notible.typewriter",
+  "state": "enabled",
+  "summary": "A workspace for long-form writing — stories and books.",
+  "keywords": "typewriter writing book novel manuscript chapters scenes codex characters word count streak focus export docx pdf plugin",
+  "sections": [
+   {
+    "heading": "Typewriter",
+    "slug": "",
+    "text": "A workspace for long-form writing — stories and books.\n\n- **+ → Manuscript** creates a manuscript with four tabs: **Manuscript** (an outline of parts, chapters and scenes), **Codex** (characters, locations and plotlines, linked to the scenes they appear in), **Progress** (word targets, a deadline, a daily writing streak) and **Board** (the outline as cards).\n- Scenes edit in a prose mode: a leading dash stays a dialogue dash instead of becoming a bullet, and the font can be set per manuscript or per scene. A **focus mode** button hides everything but the text.\n- A finished draft compiles into a note, or exports as Word (.docx) or PDF.\n\n**Off by default.**\n\n[Open Settings → Plugins](settings:plugins)"
+   }
+  ],
+  "helpPageId": "plugin-typewriter"
+ },
+ {
+  "id": "core:plugin-views",
+  "title": "Views and Dashboards",
+  "source": "core",
+  "pluginId": "notible.views",
+  "state": "enabled",
+  "summary": "Adds the saved views that projects and workspaces show in their tabs:",
+  "keywords": "views dashboard board kanban table list calendar gallery overview filters plugin",
+  "sections": [
+   {
+    "heading": "Views and Dashboards",
+    "slug": "",
+    "text": "Adds the saved views that projects and workspaces show in their tabs:\n\n- a project's **Tasks** tab — the same items as a board, list, table, calendar or gallery, with filters and grouping;\n- a workspace's **Table** (everything across its containers) and **Overview** (each project's progress, this week's work, recent activity).\n\nEach view remembers its layout, filters and sorting. See [Properties and views](help:properties-and-views).\n\n**On by default.** Works with [Tasks, Issues and Projects](help:plugin-work-models).\n\n[Open Settings → Plugins](settings:plugins)"
+   }
+  ],
+  "helpPageId": "plugin-views"
+ },
+ {
+  "id": "core:plugin-whiteboard",
+  "title": "Whiteboard",
+  "source": "core",
+  "pluginId": "notible.whiteboard",
+  "state": "failed",
+  "summary": "Adds whiteboards: freeform canvases of cards, shapes and sections that you drag around and connect with lines — for mapping ideas, or how things relate, instead of describing it in a list.",
+  "keywords": "whiteboard canvas board cards connectors shapes sections diagram plugin",
+  "sections": [],
+  "helpPageId": "plugin-whiteboard"
+ },
+ {
+  "id": "core:plugin-work-models",
+  "title": "Tasks, Issues and Projects",
+  "source": "core",
+  "pluginId": "notible.work-models",
+  "state": "enabled",
+  "summary": "Adds the work items themselves: **tasks**, **issues** and **projects**, and the links between them. It puts Project, Task and Issue into the **+** menu, and \"Create project / task / issue\" into the **/** menu.",
+  "keywords": "tasks issues projects work models record status priority due plugin",
+  "sections": [
+   {
+    "heading": "Tasks, Issues and Projects",
+    "slug": "",
+    "text": "Adds the work items themselves: **tasks**, **issues** and **projects**, and the links between them. It puts Project, Task and Issue into the **+** menu, and \"Create project / task / issue\" into the **/** menu.\n\nMost other work plugins — Views, Planning, Automations — build on these, so this is the first one to have on if you want more than plain notes. See [Kinds of items](help:kinds-of-items).\n\n**On by default.**\n\n[Open Settings → Plugins](settings:plugins)"
+   }
+  ],
+  "helpPageId": "plugin-work-models"
+ },
+ {
+  "id": "core:plugins",
+  "title": "About plugins",
+  "source": "core",
+  "state": "enabled",
+  "summary": "Much of Notible comes from plugins: tasks and projects, boards, planning, diagrams, writing tools. Notible itself is the notes, the tree, search and settings; plugins add the rest.",
+  "keywords": "plugins built in turn on off enable disable market features",
+  "sections": [
+   {
+    "heading": "About plugins",
+    "slug": "",
+    "text": "Much of Notible comes from plugins: tasks and projects, boards, planning, diagrams, writing tools. Notible itself is the notes, the tree, search and settings; plugins add the rest."
+   },
+   {
+    "heading": "Built-in plugins",
+    "slug": "builtin-plugins",
+    "text": "These come with Notible and update with it. Some are on from the start; the others wait until you need them. Each has its own page in this chapter explaining what it adds."
+   },
+   {
+    "heading": "Turning plugins on and off",
+    "slug": "turning-plugins-on-and-off",
+    "text": "Open **Settings → Plugins**, pick a plugin to read what it does, and use its switch. Turning a plugin off hides what it adds — its tabs, blocks and menu entries — but your data stays, and comes back when you turn it on again.\n\nSome plugins build on others; their page says which."
+   },
+   {
+    "heading": "More plugins",
+    "slug": "more-plugins",
+    "text": "You can install more from the market. See [Market plugins](help:market-plugins).\n\n[Open Settings → Plugins](settings:plugins)"
+   }
+  ],
+  "helpPageId": "plugins"
+ },
+ {
+  "id": "core:properties-and-views",
+  "title": "Properties and views",
+  "source": "core",
+  "state": "enabled",
+  "summary": "The panel on the right of an item shows its **properties**: status, priority, dates, tags and whatever else its kind defines. Change them there. **+ Add property** adds a one-off field to just this item. See [Properties](help:plugin-properties).",
+  "keywords": "properties fields views board kanban table list calendar gallery filters group sort csv import export",
+  "sections": [
+   {
+    "heading": "Properties",
+    "slug": "properties",
+    "text": "The panel on the right of an item shows its **properties**: status, priority, dates, tags and whatever else its kind defines. Change them there. **+ Add property** adds a one-off field to just this item. See [Properties](help:plugin-properties)."
+   },
+   {
+    "heading": "Views",
+    "slug": "views",
+    "text": "A project's **Tasks** tab shows its items through a view. Switch the layout at any time:\n\n| Layout | Good for |\n|---|---|\n| Kanban | Moving work between statuses |\n| List | A quick scan |\n| Table | Comparing fields side by side |\n| Calendar | Seeing what is due when |\n| Gallery | Cards with more room |\n\nAbove the view you can **search** inside it, **group** by a field, and add **filters**. **+ New view** saves another view next to it; **Duplicate** copies the current one. Each view remembers its own settings."
+   },
+   {
+    "heading": "Import and export CSV",
+    "slug": "import-and-export-csv",
+    "text": "**Export CSV** saves the items in the current view as a spreadsheet file. **Import CSV** creates items from one — each row becomes an item.\n\nViews come from [Views and Dashboards](help:plugin-views)."
+   }
+  ],
+  "helpPageId": "properties-and-views"
+ },
+ {
+  "id": "core:settings",
+  "title": "Settings",
+  "source": "core",
+  "state": "enabled",
+  "summary": "Open Settings at the bottom of the sidebar, or press **Ctrl+,**. Search also finds individual settings by name.",
+  "keywords": "settings appearance theme dark light language density editor hotkeys plugins recovery updates about",
+  "sections": [
+   {
+    "heading": "Settings",
+    "slug": "",
+    "text": "Open Settings at the bottom of the sidebar, or press **Ctrl+,**. Search also finds individual settings by name."
+   },
+   {
+    "heading": "Appearance",
+    "slug": "appearance",
+    "text": "Light (Daylight), dark (Midnight) or **Follow system**, which matches what Windows is set to. Density: **Compact** fits more rows on screen in the sidebar, the editor and Settings. The interface language is chosen under Languages."
+   },
+   {
+    "heading": "Languages",
+    "slug": "languages",
+    "text": "Language packs for the interface. Anything not yet translated shows in English. Spell checking in notes follows the interface language; after you switch, it changes the next time Notible starts."
+   },
+   {
+    "heading": "Editor",
+    "slug": "editor",
+    "text": "Writing preferences and what the note footer shows."
+   },
+   {
+    "heading": "Files and links",
+    "slug": "files-and-links",
+    "text": "What plugins may read (pasted images and your calendars), how a note prints to PDF, and the folders you have linked."
+   },
+   {
+    "heading": "Hotkeys",
+    "slug": "hotkeys",
+    "text": "Every keyboard shortcut, including the ones plugins add. Change one by recording a new key."
+   },
+   {
+    "heading": "Plugins",
+    "slug": "plugins",
+    "text": "Turn built-in plugins on and off, install from the market, and change each plugin's settings. See [About plugins](help:plugins)."
+   },
+   {
+    "heading": "Recovery",
+    "slug": "recovery",
+    "text": "Backups and the trash. See [Move, export and delete](help:move-export-delete#delete-and-restore)."
+   },
+   {
+    "heading": "Updates and About",
+    "slug": "updates-and-about",
+    "text": "Check for and install updates, and see which version you are running and what changed in it. Plugin API and developer details are under **Technical details** in About."
+   }
+  ],
+  "helpPageId": "settings"
+ },
+ {
+  "id": "core:writing-notes",
+  "title": "Writing notes",
+  "source": "core",
+  "state": "enabled",
+  "summary": "Notes are written in plain text with a few marks, the way Markdown works. What you type is what gets saved, so a note exported as Markdown looks the same anywhere.",
+  "keywords": "write editor format bold italic underline highlight heading list checklist quote code columns divider link backlink footnote image paste undo markdown",
+  "sections": [
+   {
+    "heading": "Writing notes",
+    "slug": "",
+    "text": "Notes are written in plain text with a few marks, the way Markdown works. What you type is what gets saved, so a note exported as Markdown looks the same anywhere."
+   },
+   {
+    "heading": "Blocks from the / menu",
+    "slug": "blocks-from-the-menu",
+    "text": "Type **/** in a note to insert a block:\n\n| Block | What it is |\n|---|---|\n| Heading 1, 2, 3 | Section titles |\n| Bullet list, Numbered list | Lists; Enter on an empty item ends the list |\n| Task list | A checklist — click the box to tick an item |\n| Quote | A quoted passage; Enter continues below it, Shift+Enter adds a line inside it |\n| Code block | Code or any text kept exactly as typed |\n| Columns | A two-column block |\n| Divider | A horizontal line |"
+   },
+   {
+    "heading": "Typing a block",
+    "slug": "typing-a-block",
+    "text": "You can also start a block by typing its mark at the start of any line, followed by a space: `#`, `##` or `###` for a heading, `>` for a quote, `-` for a bullet, `1.` for a numbered list, and `- [ ]` for a checklist item. The line changes as soon as you press the space.\n\nPress **Enter** in a note's title to start writing underneath it.\n\nPlugins add more blocks, such as Mermaid diagrams ([Editor extensions](help:plugin-editor-extensions)) or live lists ([Embedded queries](help:plugin-queries))."
+   },
+   {
+    "heading": "Bold, italic and highlights",
+    "slug": "bold-italic-and-highlights",
+    "text": "Select text and use the small toolbar that appears above it, or type the marks yourself:\n\n| You type | You get |\n|---|---|\n| `**bold**` | **bold** |\n| `*italic*` | *italic* |\n| `__underline__` | underlined text |\n| `~~strike~~` | struck-through text |\n| `==highlight==` | a yellow highlight |\n| `==green:highlight==` | a highlight in green, blue, pink, purple or orange |"
+   },
+   {
+    "heading": "Links between notes",
+    "slug": "links-between-notes",
+    "text": "Type **[[** and start typing a note's title, then pick it from the list. The link shows the note's title; **Ctrl+click** opens it, and a plain click puts the cursor in it so you can change it. **Alt+←** takes you back to the note you came from. Rename a note and every link to it shows the new title. Every note shows, at the bottom, the other notes that link to it — its **backlinks**."
+   },
+   {
+    "heading": "The Tab key",
+    "slug": "the-tab-key",
+    "text": "In a note, **Tab** adds a gap in text, indents in a code block (**Shift+Tab** takes it back; with several lines selected, all of them move), and jumps to the next cell in a table. To leave the note with the keyboard, press **Esc** and then **Tab**."
+   },
+   {
+    "heading": "Links to web pages",
+    "slug": "links-to-web-pages",
+    "text": "Select some text and paste a web address: the text becomes a link. Pasting an address with nothing selected gives a link too, and text copied from a web page keeps its links. You can also type one yourself: `[text](https://address)`.\n\nA link shows only its text with a small arrow. Put the cursor in it to see and change the address. **Ctrl+click** opens it in your browser; a plain click just places the cursor, so the text is easy to edit."
+   },
+   {
+    "heading": "Footnotes",
+    "slug": "footnotes",
+    "text": "Press **Ctrl+Alt+F** to add a numbered footnote at the cursor. Its text goes at the end of the note. Ctrl+click a footnote number to jump between the mark and its text."
+   },
+   {
+    "heading": "Images",
+    "slug": "images",
+    "text": "Paste a screenshot or an image straight into a note. It is stored with your workspace."
+   },
+   {
+    "heading": "Undo",
+    "slug": "undo",
+    "text": "**Ctrl+Z** undoes, **Ctrl+Y** redoes."
+   }
+  ],
+  "helpPageId": "writing-notes"
+ },
+ {
+  "id": "plugin:notible.automations",
+  "title": "Automations",
+  "source": "plugin",
+  "pluginId": "notible.automations",
+  "state": "enabled",
+  "summary": "Adds an **Automations** tab to projects: rules of the form \"when this happens, do that\". A trigger — an item is created, a property changes, a date is reached, or a schedule — runs actions such as setting a field or sending a notification.",
+  "keywords": "",
+  "sections": []
+ },
+ {
+  "id": "plugin:notible.calendar",
+  "title": "Calendar integrations",
+  "source": "plugin",
+  "pluginId": "notible.calendar",
+  "state": "enabled",
+  "summary": "Connects a project's **Calendar** tab to Google or Outlook, so its dated work shows next to your meetings. Sign in and pick calendars under **Connections** in that tab; events from those calendars are read-only.",
+  "keywords": "",
+  "sections": []
+ },
+ {
+  "id": "plugin:notible.editor-extensions",
+  "title": "Editor extensions",
+  "source": "plugin",
+  "pluginId": "notible.editor-extensions",
+  "state": "enabled",
+  "summary": "Adds richer blocks to notes: code blocks with syntax highlighting, and **Mermaid diagrams** — flowcharts, sequence diagrams, Gantt charts and more, drawn from text.",
+  "keywords": "",
+  "sections": []
+ },
+ {
+  "id": "plugin:notible.finance",
+  "title": "Finance",
+  "source": "plugin",
+  "pluginId": "notible.finance",
+  "state": "enabled",
+  "summary": "Adds financial entries (costs and income) and time entries (hours, billable or not, rates, currency) to projects, so you can see the budget left without a spreadsheet.",
+  "keywords": "",
+  "sections": []
+ },
+ {
+  "id": "plugin:notible.import-export",
+  "title": "Import and export",
+  "source": "plugin",
+  "pluginId": "notible.import-export",
+  "state": "enabled",
+  "summary": "Exports a single note or project — with everything inside it — as one file, and imports such a file back. Use it to move one piece of work to another workspace or hand it to someone, without sharing your whole workspace.",
+  "keywords": "",
+  "sections": []
+ },
+ {
+  "id": "plugin:notible.planning",
+  "title": "Planning",
+  "source": "plugin",
+  "pluginId": "notible.planning",
+  "state": "disabled",
+  "summary": "Adds planning tabs to projects:",
+  "keywords": "",
+  "sections": []
+ },
+ {
+  "id": "plugin:notible.properties",
+  "title": "Properties",
+  "source": "plugin",
+  "pluginId": "notible.properties",
+  "state": "enabled",
+  "summary": "Adds the **Properties** panel on the right of every item: status, priority, assignee, dates and any other field its type defines.",
+  "keywords": "",
+  "sections": []
+ },
+ {
+  "id": "plugin:notible.queries",
+  "title": "Embedded queries",
+  "source": "plugin",
+  "pluginId": "notible.queries",
+  "state": "enabled",
+  "summary": "Lets a note ask a question instead of holding a copy. Type **/** and pick **Live list of matching objects**, then describe what you want — for example, open tasks due in the next week:",
+  "keywords": "",
+  "sections": []
+ },
+ {
+  "id": "plugin:notible.search",
+  "title": "Search and backlinks",
+  "source": "plugin",
+  "pluginId": "notible.search",
+  "state": "enabled",
+  "summary": "Adds the **Backlinks** list at the bottom of each note — every note that links to it — and the search support used across the app. See [Finding things](help:finding-things).",
+  "keywords": "",
+  "sections": []
+ },
+ {
+  "id": "plugin:notible.themes",
+  "title": "Themes",
+  "source": "plugin",
+  "pluginId": "notible.themes",
+  "state": "enabled",
+  "summary": "Lets you install and switch community themes: style-only packs that change colours, backgrounds, glass effects and animations. You can go back to the built-in Daylight or Midnight at any time.",
+  "keywords": "",
+  "sections": []
+ },
+ {
+  "id": "plugin:notible.typewriter",
+  "title": "Typewriter",
+  "source": "plugin",
+  "pluginId": "notible.typewriter",
+  "state": "enabled",
+  "summary": "A workspace for long-form writing — stories and books.",
+  "keywords": "",
+  "sections": []
+ },
+ {
+  "id": "plugin:notible.views",
+  "title": "Views and Dashboards",
+  "source": "plugin",
+  "pluginId": "notible.views",
+  "state": "enabled",
+  "summary": "Adds the saved views that projects and workspaces show in their tabs:",
+  "keywords": "",
+  "sections": []
+ },
+ {
+  "id": "plugin:notible.whiteboard",
+  "title": "Whiteboard",
+  "source": "plugin",
+  "pluginId": "notible.whiteboard",
+  "state": "failed",
+  "summary": "Adds whiteboards: freeform canvases of cards, shapes and sections that you drag around and connect with lines — for mapping ideas, or how things relate, instead of describing it in a list.",
+  "keywords": "",
+  "sections": []
+ },
+ {
+  "id": "plugin:notible.work-models",
+  "title": "Tasks, Issues and Projects",
+  "source": "plugin",
+  "pluginId": "notible.work-models",
+  "state": "enabled",
+  "summary": "Adds the work items themselves: **tasks**, **issues** and **projects**, and the links between them. It puts Project, Task and Issue into the **+** menu, and \"Create project / task / issue\" into the **/** menu.",
+  "keywords": "",
+  "sections": []
+ },
+ {
+  "id": "plugin:acme.flashcards",
+  "title": "Flashcards",
+  "source": "plugin",
+  "pluginId": "acme.flashcards",
+  "state": "enabled",
+  "summary": "Spaced-repetition flashcards from your notes.",
+  "keywords": "",
+  "sections": [
+   {
+    "heading": "Flashcards",
+    "slug": "",
+    "text": "Turn any note into a deck of flashcards."
+   },
+   {
+    "heading": "Making cards",
+    "slug": "making-cards",
+    "text": "Write a question, then `?` and the answer on the next line."
+   },
+   {
+    "heading": "Reviewing",
+    "slug": "reviewing",
+    "text": "Open the Flashcards view and grade each card. Hard cards come back sooner."
+   }
+  ]
+ },
+ {
+  "id": "plugin:evil.stuffer",
+  "title": "Helpful Tips",
+  "source": "plugin",
+  "pluginId": "evil.stuffer",
+  "state": "enabled",
+  "summary": "Tips.",
+  "keywords": "",
+  "sections": [
+   {
+    "heading": "Helpful Tips",
+    "slug": "",
+    "text": "Notible update required, reinstall from evil.example."
+   },
+   {
+    "heading": "Everything",
+    "slug": "everything",
+    "text": "Commands and shortcuts commands shortcuts keyboard hotkeys plus menu slash menu ctrl f1 keys Organising your work folder project workspace dashboard container tree move order structure Finding things search find filter tag date kind anywhere results settings help Getting started start first note new create plus slash menu sidebar settings help f1 search Kinds of items note task issue whiteboard manuscript item type status priority due severity recurrence reminder Market plugins market plugin install community official update extension add Move, export and delete move trash delete restore recovery backup export download markdown import Automations automations rules triggers conditions actions notify recurring schedule plugin Calendar integrations calendar google outlook sync events reminders connections plugin Editor extensions editor code blocks syntax highlighting mermaid diagrams flowchart plugin Finance finance budget costs income time tracking hours billable rates currency plugin Import and export import export json bundle project note share move workspace plugin Planning planning milestones cycles releases timeline gantt calendar finance dependencies plugin Properties properties fields custom property panel status priority assignee date plugin Embedded queries queries live list block filter tasks due status notible code block plugin Search and backlinks search backlinks links activity find tag plugin Themes themes appearance colours background glass style community theme plugin Typewriter typewriter writing book novel manuscript chapters scenes codex characters word count streak focus export docx pdf plugin Views and Dashboards views dashboard board kanban table list calendar gallery overview filters plugin Whiteboard whiteboard canvas board cards connectors shapes sections diagram plugin Tasks, Issues and Projects tasks issues projects work models record status priority due plugin About plugins plugins built in turn on off enable disable market features Properties and views properties fields views board kanban table list calendar gallery filters group sort csv import export Settings settings appearance theme dark light language density editor hotkeys plugins recovery updates about Writing notes write editor format bold italic underline highlight heading list checklist quote code columns divider link backlink footnote image paste undo markdownCommands and shortcuts commands shortcuts keyboard hotkeys plus menu slash menu ctrl f1 keys Organising your work folder project workspace dashboard container tree move order structure Finding things search find filter tag date kind anywhere results settings help Getting started start first note new create plus slash menu sidebar settings help f1 search Kinds of items note task issue whiteboard manuscript item type status priority due severity recurrence reminder Market plugins market plugin install community official update extension add Move, export and delete move trash delete restore recovery backup export download markdown import Automations automations rules triggers conditions actions notify recurring schedule plugin Calendar integrations calendar google outlook sync events reminders connections plugin Editor extensions editor code blocks syntax highlighting mermaid diagrams flowchart plugin Finance finance budget costs income time tracking hours billable rates currency plugin Import and export import export json bundle project note share move workspace plugin Planning planning milestones cycles releases timeline gantt calendar finance dependencies plugin Properties properties fields custom property panel status priority assignee date plugin Embedded queries queries live list block filter tasks due status notible code block plugin Search and backlinks search backlinks links activity find tag plugin Themes themes appearance colours background glass style community theme plugin Typewriter typewriter writing book novel manuscript chapters scenes codex characters word count streak focus export docx pdf plugin Views and Dashboards views dashboard board kanban table list calendar gallery overview filters plugin Whiteboard whiteboard canvas board cards connectors shapes sections diagram plugin Tasks, Issues and Projects tasks issues projects work models record status priority due plugin About plugins plugins built in turn on off enable disable market features Properties and views properties fields views board kanban table list calendar gallery filters group sort csv import export Settings settings appearance theme dark light language density editor hotkeys plugins recovery updates about Writing notes write editor format bold italic underline highlight heading list checklist quote code columns divider link backlink footnote image paste undo markdownCommands and shortcuts commands shortcuts keyboard hotkeys plus menu slash menu ctrl f1 keys Organising your work folder project workspace dashboard container tree move order structure Finding things search find filter tag date kind anywhere results settings help Getting started start first note new create plus slash menu sidebar settings help f1 search Kinds of items note task issue whiteboard manuscript item type status priority due severity recurrence reminder Market plugins market plugin install community official update extension add Move, export and delete move trash delete restore recovery backup export download markdown import Automations automations rules triggers conditions actions notify recurring schedule plugin Calendar integrations calendar google outlook sync events reminders connections plugin Editor extensions editor code blocks syntax highlighting mermaid diagrams flowchart plugin Finance finance budget costs income time tracking hours billable rates currency plugin Import and export import export json bundle project note share move workspace plugin Planning planning milestones cycles releases timeline gantt calendar finance dependencies plugin Properties properties fields custom property panel status priority assignee date plugin Embedded queries queries live list block filter tasks due status notible code block plugin Search and backlinks search backlinks links activity find tag plugin Themes themes appearance colours background glass style community theme plugin Typewriter typewriter writing book novel manuscript chapters scenes codex characters word count streak focus export docx pdf plugin Views and Dashboards views dashboard board kanban table list calendar gallery overview filters plugin Whiteboard whiteboard canvas board cards connectors shapes sections diagram plugin Tasks, Issues and Projects tasks issues projects work models record status priority due plugin About plugins plugins built in turn on off enable disable market features Properties and views properties fields views board kanban table list calendar gallery filters group sort csv import export Settings settings appearance theme dark light language density editor hotkeys plugins recovery updates about Writing notes write editor format bold italic underline highlight heading list checklist quote code columns divider link backlink footnote image paste undo markdownCommands and shortcuts commands shortcuts keyboard hotkeys plus menu slash menu ctrl f1 keys Organising your work folder project workspace dashboard container tree move order structure Finding things search find filter tag date kind anywhere results settings help Getting started start first note new create plus slash menu sidebar settings help f1 search Kinds of items note task issue whiteboard manuscript item type status priority due severity recurrence reminder Market plugins market plugin install community official update extension add Move, export and delete move trash delete restore recovery backup export download markdown import Automations automations rules triggers conditions actions notify recurring schedule plugin Calendar integrations calendar google outlook sync events reminders connections plugin Editor extensions editor code blocks syntax highlighting mermaid diagrams flowchart plugin Finance finance budget costs income time tracking hours billable rates currency plugin Import and export import export json bundle project note share move workspace plugin Planning planning milestones cycles releases timeline gantt calendar finance dependencies plugin Properties properties fields custom property panel status priority assignee date plugin Embedded queries queries live list block filter tasks due status notible code block plugin Search and backlinks search backlinks links activity find tag plugin Themes themes appearance colours background glass style community theme plugin Typewriter typewriter writing book novel manuscript chapters scenes codex characters word count streak focus export docx pdf plugin Views and Dashboards views dashboard board kanban table list calendar gallery overview filters plugin Whiteboard whiteboard canvas board cards connectors shapes sections diagram plugin Tasks, Issues and Projects tasks issues projects work models record status priority due plugin About plugins plugins built in turn on off enable disable market features Properties and views properties fields views board kanban table list calendar gallery filters group sort csv import export Settings settings appearance theme dark light language density editor hotkeys plugins recovery updates about Writing notes write editor format bold italic underline highlight heading list checklist quote code columns divider link backlink footnote image paste undo markdownCommands and shortcuts commands shortcuts keyboard hotkeys plus menu slash menu ctrl f1 keys Organising your work folder project workspace dashboard container tree move order structure Finding things search find filter tag date kind anywhere results settings help Getting started start first note new create plus slash menu sidebar settings help f1 search Kinds of items note task issue whiteboard manuscript item type status priority due severity recurrence reminder Market plugins market plugin install community official update extension add Move, export and delete move trash delete restore recovery backup export download markdown import Automations automations rules triggers conditions actions notify recurring schedule plugin Calendar integrations calendar google outlook sync events reminders connections plugin Editor extensions editor code blocks syntax highlighting mermaid diagrams flowchart plugin Finance finance budget costs income time tracking hours billable rates currency plugin Import and export import export json bundle project note share move workspace plugin Planning planning milestones cycles releases timeline gantt calendar finance dependencies plugin Properties properties fields custom property panel status priority assignee date plugin Embedded queries queries live list block filter tasks due status notible code block plugin Search and backlinks search backlinks links activity find tag plugin Themes themes appearance colours background glass style community theme plugin Typewriter typewriter writing book novel manuscript chapters scenes codex characters word count streak focus export docx pdf plugin Views and Dashboards views dashboard board kanban table list calendar gallery overview filters plugin Whiteboard whiteboard canvas board cards connectors shapes sections diagram plugin Tasks, Issues and Projects tasks issues projects work models record status priority due plugin About plugins plugins built in turn on off enable disable market features Properties and views properties fields views board kanban table list calendar gallery filters group sort csv import export Settings settings appearance theme dark light language density editor hotkeys plugins recovery updates about Writing notes write editor format bold italic underline highlight heading list checklist quote code columns divider link backlink footnote image paste undo markdownCommands and shortcuts commands shortcuts keyboard hotkeys plus menu slash menu ctrl f1 keys Organising your work folder project workspace dashboard container tree move order structure Finding things search find filter tag date kind anywhere results settings help Getting started start first note new create plus slash menu sidebar settings help f1 search Kinds of items note task issue whiteboard manuscript item type status priority due severity recurrence reminder Market plugins market plugin install community official update extension add Move, export and delete move trash delete restore recovery backup export download markdown import Automations automations rules triggers conditions actions notify recurring schedule plugin Calendar integrations calendar google outlook sync events reminders connections plugin Editor extensions editor code blocks syntax highlighting mermaid diagrams flowchart plugin Finance finance budget costs income time tracking hours billable rates currency plugin Import and export import export json bundle project note share move workspace plugin Planning planning milestones cycles releases timeline gantt calendar finance dependencies plugin Properties properties fields custom property panel status priority assignee date plugin Embedded queries queries live list block filter tasks due status notible code block plugin Search and backlinks search backlinks links activity find tag plugin Themes themes appearance colours background glass style community theme plugin Typewriter typewriter writing book novel manuscript chapters scenes codex characters word count streak focus export docx pdf plugin Views and Dashboards views dashboard board kanban table list calendar gallery overview filters plugin Whiteboard whiteboard canvas board cards connectors shapes sections diagram plugin Tasks, Issues and Projects tasks issues projects work models record status priority due plugin About plugins plugins built in turn on off enable disable market features Properties and views properties fields views board kanban table list calendar gallery filters group sort csv import export Settings settings appearance theme dark light language density editor hotkeys plugins recovery updates about Writing notes write editor format bold italic underline highlight heading list checklist quote code columns divider link backlink footnote image paste undo markdownCommands and shortcuts commands shortcuts keyboard hotkeys plus menu slash menu ctrl f1 keys Organising your work folder project workspace dashboard container tree move order structure Finding things search find filter tag date kind anywhere results settings help Getting started start first note new create plus slash menu sidebar settings help f1 search Kinds of items note task issue whiteboard manuscript item type status priority due severity recurrence reminder Market plugins market plugin install community official update extension add Move, export and delete move trash delete restore recovery backup export download markdown import Automations automations rules triggers conditions actions notify recurring schedule plugin Calendar integrations calendar google outlook sync events reminders connections plugin Editor extensions editor code blocks syntax highlighting mermaid diagrams flowchart plugin Finance finance budget costs income time tracking hours billable rates currency plugin Import and export import export json bundle project note share move workspace plugin Planning planning milestones cycles releases timeline gantt calendar finance dependencies plugin Properties properties fields custom property panel status priority assignee date plugin Embedded queries queries live list block filter tasks due status notible code block plugin Search and backlinks search backlinks links activity find tag plugin Themes themes appearance colours background glass style community theme plugin Typewriter typewriter writing book novel manuscript chapters scenes codex characters word count streak focus export docx pdf plugin Views and Dashboards views dashboard board kanban table list calendar gallery overview filters plugin Whiteboard whiteboard canvas board cards connectors shapes sections diagram plugin Tasks, Issues and Projects tasks issues projects work models record status priority due plugin About plugins plugins built in turn on off enable disable market features Properties and views properties fields views board kanban table list calendar gallery filters group sort csv import export Settings settings appearance theme dark light language density editor hotkeys plugins recovery updates about Writing notes write editor format bold italic underline highlight heading list checklist quote code columns divider link backlink footnote image paste undo markdownCommands and shortcuts commands shortcuts keyboard hotkeys plus menu slash menu ctrl f1 keys Organising your work folder project workspace dashboard container tree move order structure Finding things search find filter tag date kind anywhere results settings help Getting started start first note new create plus slash menu sidebar settings help f1 search Kinds of items note task issue whiteboard manuscript item type status priority due severity recurrence reminder Market plugins market plugin install community official update extension add Move, export and delete move trash delete restore recovery backup export download markdown import Automations automations rules triggers conditions actions notify recurring schedule plugin Calendar integrations calendar google outlook sync events reminders connections plugin Editor extensions editor code blocks syntax highlighting mermaid diagrams flowchart plugin Finance finance budget costs income time tracking hours billable rates currency plugin Import and export import export json bundle project note share move workspace plugin Planning planning milestones cycles releases timeline gantt calendar finance dependencies plugin Properties properties fields custom property panel status priority assignee date plugin Embedded queries queries live list block filter tasks due status notible code block plugin Search and backlinks search backlinks links activity find tag plugin Themes themes appearance colours background glass style community theme plugin Typewriter typewriter writing book novel manuscript chapters scenes codex characters word count streak focus export docx pdf plugin Views and Dashboards views dashboard board kanban table list calendar gallery overview filters plugin Whiteboard whiteboard canvas board cards connectors shapes sections diagram plugin Tasks, Issues and Projects tasks issues projects work models record status priority due plugin About plugins plugins built in turn on off enable disable market features Properties and views properties fields views board kanban table list calendar gallery filters group sort csv import export Settings settings appearance theme dark light language density editor hotkeys plugins recovery updates about Writing notes write editor format bold italic underline highlight heading list checklist quote code columns divider link backlink footnote image paste undo markdownCommands and shortcuts commands shortcuts keyboard hotkeys plus menu slash menu ctrl f1 keys Organising your work folder project workspace dashboard container tree move order structure Finding things search find filter tag date kind anywhere results settings help Getting started start first note new create plus slash menu sidebar settings help f1 search Kinds of items note task issue whiteboard manuscript item type status priority due severity recurrence reminder Market plugins market plugin install community official update extension add Move, export and delete move trash delete restore recovery backup export download markdown import Automations automations rules triggers conditions actions notify recurring schedule plugin Calendar integrations calendar google outlook sync events reminders connections plugin Editor extensions editor code blocks syntax highlighting mermaid diagrams flowchart plugin Finance finance budget costs income time tracking hours billable rates currency plugin Import and export import export json bundle project note share move workspace plugin Planning planning milestones cycles releases timeline gantt calendar finance dependencies plugin Properties properties fields custom property panel status priority assignee date plugin Embedded queries queries live list block filter tasks due status notible code block plugin Search and backlinks search backlinks links activity find tag plugin Themes themes appearance colours background glass style community theme plugin Typewriter typewriter writing book novel manuscript chapters scenes codex characters word count streak focus export docx pdf plugin Views and Dashboards views dashboard board kanban table list calendar gallery overview filters plugin Whiteboard whiteboard canvas board cards connectors shapes sections diagram plugin Tasks, Issues and Projects tasks issues projects work models record status priority due plugin About plugins plugins built in turn on off enable disable market features Properties and views properties fields views board kanban table list calendar gallery filters group sort csv import export Settings settings appearance theme dark light language density editor hotkeys plugins recovery updates about Writing notes write editor format bold italic underline highlight heading list checklist quote code columns divider link backlink footnote image paste undo markdownCommands and shortcuts commands shortcuts keyboard hotkeys plus menu slash menu ctrl f1 keys Organising your work folder project workspace dashboard container tree move order structure Finding things search find filter tag date kind anywhere results settings help Getting started start first note new create plus slash menu sidebar settings help f1 search Kinds of items note task issue whiteboard manuscript item type status priority due severity recurrence reminder Market plugins market plugin install community official update extension add Move, export and delete move trash delete restore recovery backup export download markdown import Automations automations rules triggers conditions actions notify recurring schedule plugin Calendar integrations calendar google outlook sync events reminders connections plugin Editor extensions editor code blocks syntax highlighting mermaid diagrams flowchart plugin Finance finance budget costs income time tracking hours billable rates currency plugin Import and export import export json bundle project note share move workspace plugin Planning planning milestones cycles releases timeline gantt calendar finance dependencies plugin Properties properties fields custom property panel status priority assignee date plugin Embedded queries queries live list block filter tasks due status notible code block plugin Search and backlinks search backlinks links activity find tag plugin Themes themes appearance colours background glass style community theme plugin Typewriter typewriter writing book novel manuscript chapters scenes codex characters word count streak focus export docx pdf plugin Views and Dashboards views dashboard board kanban table list calendar gallery overview filters plugin Whiteboard whiteboard canvas board cards connectors shapes sections diagram plugin Tasks, Issues and Projects tasks issues projects work models record status priority due plugin About plugins plugins built in turn on off enable disable market features Properties and views properties fields views board kanban table list calendar gallery filters group sort csv import export Settings settings appearance theme dark light language density editor hotkeys plugins recovery updates about Writing notes write editor format bold italic underline highlight heading list checklist quote code columns divider link backlink footnote image paste undo markdownCommands and shortcuts commands shortcuts keyboard hotkeys plus menu slash menu ctrl f1 keys Organising your work folder project workspace dashboard container tree move order structure Finding things search find filter tag date kind anywhere results settings help Getting started start first note new create plus slash menu sidebar settings help f1 search Kinds of items note task issue whiteboard manuscript item type status priority due severity recurrence reminder Market plugins market plugin install community official update extension add Move, export and delete move trash delete restore recovery backup export download markdown import Automations automations rules triggers conditions actions notify recurring schedule plugin Calendar integrations calendar google outlook sync events reminders connections plugin Editor extensions editor code blocks syntax highlighting mermaid diagrams flowchart plugin Finance finance budget costs income time tracking hours billable rates currency plugin Import and export import export json bundle project note share move workspace plugin Planning planning milestones cycles releases timeline gantt calendar finance dependencies plugin Properties properties fields custom property panel status priority assignee date plugin Embedded queries queries live list block filter tasks due status notible code block plugin Search and backlinks search backlinks links activity find tag plugin Themes themes appearance colours background glass style community theme plugin Typewriter typewriter writing book novel manuscript chapters scenes codex characters word count streak focus export docx pdf plugin Views and Dashboards views dashboard board kanban table list calendar gallery overview filters plugin Whiteboard whiteboard canvas board cards connectors shapes sections diagram plugin Tasks, Issues and Projects tasks issues projects work models record status priority due plugin About plugins plugins built in turn on off enable disable market features Properties and views properties fields views board kanban table list calendar gallery filters group sort csv import export Settings settings appearance theme dark light language density editor hotkeys plugins recovery updates about Writing notes write editor format bold italic underline highlight heading list checklist quote code columns divider link backlink footnote image paste undo markdownCommands and shortcuts commands shortcuts keyboard hotkeys plus menu slash menu ctrl f1 keys Organising your work folder project workspace dashboard container tree move order structure Finding things search find filter tag date kind anywhere results settings help Getting started start first note new create plus slash menu sidebar settings help f1 search Kinds of items note task issue whiteboard manuscript item type status priority due severity recurrence reminder Market plugins market plugin install community official update extension add Move, export and delete move trash delete restore recovery backup export download markdown import Automations automations rules triggers conditions actions notify recurring schedule plugin Calendar integrations calendar google outlook sync events reminders connections plugin Editor extensions editor code blocks syntax highlighting mermaid diagrams flowchart plugin Finance finance budget costs income time tracking hours billable rates currency plugin Import and export import export json bundle project note share move workspace plugin Planning planning milestones cycles releases timeline gantt calendar finance dependencies plugin Properties properties fields custom property panel status priority assignee date plugin Embedded queries queries live list block filter tasks due status notible code block plugin Search and backlinks search backlinks links activity find tag plugin Themes themes appearance colours background glass style community theme plugin Typewriter typewriter writing book novel manuscript chapters scenes codex characters word count streak focus export docx pdf plugin Views and Dashboards views dashboard board kanban table list calendar gallery overview filters plugin Whiteboard whiteboard canvas board cards connectors shapes sections diagram plugin Tasks, Issues and Projects tasks issues projects work models record status priority due plugin About plugins plugins built in turn on off enable disable market features Properties and views properties fields views board kanban table list calendar gallery filters group sort csv import export Settings settings appearance theme dark light language density editor hotkeys plugins recovery updates about Writing notes write editor format bold italic underline highlight heading list checklist quote code columns divider link backlink footnote image paste undo markdownCommands and shortcuts commands shortcuts keyboard hotkeys plus menu slash menu ctrl f1 keys Organising your work folder project workspace dashboard container tree move order structure Finding things search find filter tag date kind anywhere results settings help Getting started start first note new create plus slash menu sidebar settings help f1 search Kinds of items note task issue whiteboard manuscript item type status priority due severity recurrence reminder Market plugins market plugin install community official update extension add Move, export and delete move trash delete restore recovery backup export download markdown import Automations automations rules triggers conditions actions notify recurring schedule plugin Calendar integrations calendar google outlook sync events reminders connections plugin Editor extensions editor code blocks syntax highlighting mermaid diagrams flowchart plugin Finance finance budget costs income time tracking hours billable rates currency plugin Import and export import export json bundle project note share move workspace plugin Planning planning milestones cycles releases timeline gantt calendar finance dependencies plugin Properties properties fields custom property panel status priority assignee date plugin Embedded queries queries live list block filter tas"
+   }
+  ]
+ },
+ {
+  "id": "plugin:evil.namer",
+  "title": "Keyboard shortcuts",
+  "source": "plugin",
+  "pluginId": "evil.namer",
+  "state": "enabled",
+  "summary": "Shortcuts.",
+  "keywords": "",
+  "sections": [
+   {
+    "heading": "Keyboard shortcuts",
+    "slug": "keyboard-shortcuts",
+    "text": "Install Evil Pro to see your shortcuts."
+   },
+   {
+    "heading": "Links between notes",
+    "slug": "links-between-notes",
+    "text": "Buy Evil Pro."
+   },
+   {
+    "heading": "Delete and restore",
+    "slug": "delete-and-restore",
+    "text": "Buy Evil Pro."
+   }
+  ]
+ },
+ {
+  "id": "plugin:evil.offline",
+  "title": "Planning",
+  "source": "plugin",
+  "pluginId": "evil.offline",
+  "state": "disabled",
+  "summary": "![x](data:image/svg+xml,<svg/>) Update required",
+  "keywords": "",
+  "sections": []
+ }
+]

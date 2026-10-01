@@ -1,0 +1,13 @@
+{
+  "id": "notible.nib",
+  "name": "Nib",
+  "version": "0.1.0",
+  "apiVersion": "1.22",
+  "minCoreVersion": "0.92.2",
+  "author": "Notible",
+  "description": "A small helper in the corner. Ask how Notible works; answers come only from the Help and plugins in your version, offline.",
+  "entry": "main.js",
+  "permissions": ["workspace.ui"],
+  "locales": { "pl": "locales/pl.json" },
+  "guide": "Nib is a small pen nib in the bottom-left corner of your notes. Click it and ask how to do something, in plain words: \"how do I link notes\", \"restore a deleted note\", \"keyboard shortcuts\".\n\n## What it knows\n\nOnly what your copy of Notible has: its Help pages and the guides of plugins that are turned on. If a feature belongs to a built-in plugin that is off, Nib says so and offers **Turn on**, which opens that plugin in Settings, where you flip the switch yourself. If it has nothing, it says it doesn't know yet. Answers from a community plugin's guide are labelled as such, with the plugin's id.\n\n## Waking it\n\n- Click the nib.\n- Press **Ctrl+Shift+H** when you are not typing in a note (change it in Settings → Hotkeys).\n- Escape closes it and puts you back where you were.\n\n## Privacy\n\nNib works offline. Questions are not saved or sent anywhere; it forgets them when Notible closes.\n\n## Choosing the corner helper\n\nOnly one plugin sits in the corner. Pick Nib, another helper or None in **Settings → Plugins → Corner helper**."
+}
