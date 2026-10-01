@@ -279,37 +279,109 @@ export function ask(index, question) {
 
 // ---------- UI ----------
 
-const NIB_SVG = `<svg viewBox="0 0 40 40" aria-hidden="true" class="nib-face"><path class="nib-body" d="M20 37 L9 18 Q9 6 20 4 Q31 6 31 18 Z"/><path class="nib-slit" d="M20 37 L20 23"/><circle class="nib-hole" cx="20" cy="21" r="2.2"/><g class="nib-eyes"><ellipse class="nib-eye" cx="15.5" cy="13" rx="1.9" ry="2.3"/><ellipse class="nib-eye" cx="24.5" cy="13" rx="1.9" ry="2.3"/></g><g class="nib-dots"><circle cx="31" cy="6" r="1.4"/><circle cx="34.5" cy="4" r="1.4"/><circle cx="38" cy="2" r="1.4"/></g><text class="nib-q" x="30" y="10">?</text><path class="nib-stroke" d="M8 39 Q20 35 32 39"/></svg>`;
+/**
+ * The fella: pixel art on a 19×23 grid, one <rect> per run of pixels, drawn
+ * crisp. A gold pen-nib body with eyes, a breather hole and a slit; layers
+ * (eyes, mouth, arms, dots, "?") are shown per mood by NIB_CSS, and every
+ * animation is stepped, frame by frame, like a sprite.
+ */
+const BODY = [
+  ".....ooooo.....",
+  "....ohhgggo....",
+  "...ohggggggo...",
+  "..ohggggggggo..",
+  "..ogggggggggo..",
+  "..ogggggggggo..",
+  "..ogggggggggo..",
+  "..ogggggggggo..",
+  "..ogggggggggo..",
+  "..oggggoggggo..",
+  "...ogggogggo...",
+  "...ogggogggo...",
+  "....oggoggo....",
+  ".....ogogo.....",
+  "......ooo......",
+  ".......o.......",
+];
+const OX = 2;
+const OY = 5;
+/** [x, y, colour] in body coordinates; colours: o outline, p pupil, w white, m mouth, d dot, q accent. */
+const LAYERS = {
+  "eyes-open": [[3, 4, "w"], [4, 4, "p"], [3, 5, "p"], [4, 5, "p"], [9, 4, "w"], [10, 4, "p"], [9, 5, "p"], [10, 5, "p"]],
+  "eyes-closed": [[3, 5, "p"], [4, 5, "p"], [9, 5, "p"], [10, 5, "p"]],
+  "eyes-up": [[3, 4, "p"], [4, 4, "p"], [3, 5, "w"], [4, 5, "w"], [9, 4, "p"], [10, 4, "p"], [9, 5, "w"], [10, 5, "w"]],
+  "eyes-happy": [[3, 5, "p"], [4, 4, "p"], [5, 5, "p"], [8, 5, "p"], [9, 4, "p"], [10, 5, "p"]],
+  "eyes-side": [[3, 4, "p"], [3, 5, "p"], [4, 4, "w"], [4, 5, "w"], [9, 4, "p"], [9, 5, "p"], [10, 4, "w"], [10, 5, "w"]],
+  "mouth-smile": [[5, 7, "m"], [6, 8, "m"], [7, 8, "m"], [8, 8, "m"], [9, 7, "m"]],
+  "mouth-o": [[6, 7, "m"], [7, 7, "m"], [8, 7, "m"], [6, 8, "m"], [7, 8, "m"], [8, 8, "m"]],
+  "mouth-flat": [[6, 8, "m"], [7, 8, "m"], [8, 8, "m"]],
+  "arms-down": [[1, 8, "o"], [0, 9, "o"], [0, 10, "g"], [13, 8, "o"], [14, 9, "o"], [14, 10, "g"]],
+  "arms-wave": [[1, 8, "o"], [0, 9, "o"], [0, 10, "g"], [13, 7, "o"], [14, 6, "o"], [14, 5, "g"]],
+  "feet": [[5, 15, "o"], [4, 16, "o"], [5, 16, "o"], [9, 15, "o"], [9, 16, "o"], [10, 16, "o"]],
+  "dot-1": [[12, -1, "d"]],
+  "dot-2": [[14, -2, "d"]],
+  "dot-3": [[16, -3, "d"]],
+  "question": [[12, -5, "q"], [13, -5, "q"], [14, -5, "q"], [14, -4, "q"], [13, -3, "q"], [13, -1, "q"]],
+};
+// The outline follows the theme (light on Midnight, or he disappears); pupils stay dark.
+const PIXEL_COLOURS = { o: "var(--nib-ink, #2a2438)", p: "#2a2438", g: "#e8b23f", h: "#f8dc8a", w: "#ffffff", m: "#8c4b1d", d: "#8f8aa6", q: "var(--notible-accent, #5b6cf0)" };
 
-const NIB_CSS = `
+function runs(pixels) {
+  // Merge horizontal neighbours of one colour into a single rect.
+  const sorted = [...pixels].sort((a, b) => a[1] - b[1] || a[0] - b[0]);
+  const out = [];
+  for (const [x, y, colour] of sorted) {
+    const last = out[out.length - 1];
+    if (last && last.y === y && last.colour === colour && last.x + last.w === x) last.w += 1;
+    else out.push({ x, y, w: 1, colour });
+  }
+  return out.map((run) => `<rect x="${run.x + OX}" y="${run.y + OY}" width="${run.w}" height="1" fill="${PIXEL_COLOURS[run.colour]}"/>`).join("");
+}
+
+function bodyPixels() {
+  const pixels = [];
+  BODY.forEach((row, y) => [...row].forEach((cell, x) => { if (cell !== ".") pixels.push([x, y, cell]); }));
+  return pixels;
+}
+
+export const NIB_SVG = `<svg viewBox="0 0 19 23" aria-hidden="true" class="nib-face" shape-rendering="crispEdges"><g class="nib-sprite"><g class="l-body">${runs(bodyPixels())}</g>${Object.entries(LAYERS).map(([name, pixels]) => `<g class="l-${name}">${runs(pixels)}</g>`).join("")}</g></svg>`;
+
+export const NIB_CSS = `
+.nib{--nib-ink:#2a2438}
+:root[data-notible-mode="dark"] .nib{--nib-ink:#efe2c4}
 .nib{font-family:var(--notible-font-sans,inherit);font-size:13px;color:var(--notible-text);display:grid;gap:8px;justify-items:start}
 .nib *{box-sizing:border-box}
 .nib button{font:inherit;color:inherit;min-height:28px;cursor:pointer}
 .nib button:focus-visible,.nib input:focus-visible{outline:2px solid var(--notible-accent);outline-offset:-2px}
-.nib-wake{width:44px;height:44px;padding:4px;border:1px solid var(--notible-border);border-radius:12px;background:var(--notible-surface)}
-.nib-wake:hover{background:var(--notible-hover)}
-.nib-face{width:100%;height:100%;display:block}
-.nib-body{fill:var(--notible-surface);stroke:var(--notible-text);stroke-width:1.6;stroke-linejoin:round}
-.nib-slit{stroke:var(--notible-text);stroke-width:1.4}
-.nib-hole{fill:var(--notible-text)}
-.nib-eye{fill:var(--notible-accent);transform-box:fill-box;transform-origin:center}
-.nib-dots,.nib-q,.nib-stroke{display:none}
-.nib-dots circle{fill:var(--notible-muted)}
-.nib-q{fill:var(--notible-muted);font-size:9px;font-weight:700}
-.nib-stroke{fill:none;stroke:var(--notible-accent);stroke-width:1.4;stroke-linecap:round}
-.is-listening .nib-eye{transform:scale(1.1)}
-.is-thinking .nib-dots{display:inline}
-.is-answering .nib-stroke{display:inline}
-.is-unsure .nib-q{display:inline}
-.is-unsure .nib-eyes{transform:translateX(-2px)}
+.nib-wake{width:57px;height:69px;padding:0;border:0;border-radius:8px;background:transparent}
+.nib-wake:hover .nib-sprite{transform:translateY(-1px)}
+.nib-face{width:100%;height:100%;display:block;image-rendering:pixelated;overflow:visible}
+.nib-face [class^="l-"]{display:none}
+.nib-face .l-body,.nib-face .l-feet,.nib-face .l-eyes-open,.nib-face .l-mouth-smile,.nib-face .l-arms-down{display:inline}
+.is-listening .l-mouth-smile{display:none}.is-listening .l-mouth-o{display:inline}
+.is-thinking .l-eyes-open,.is-thinking .l-mouth-smile{display:none}
+.is-thinking .l-eyes-up,.is-thinking .l-mouth-flat,.is-thinking .l-dot-1,.is-thinking .l-dot-2,.is-thinking .l-dot-3{display:inline}
+.is-answering .l-eyes-open,.is-answering .l-arms-down{display:none}
+.is-answering .l-eyes-happy,.is-answering .l-arms-wave{display:inline}
+.is-unsure .l-eyes-open,.is-unsure .l-mouth-smile{display:none}
+.is-unsure .l-eyes-side,.is-unsure .l-mouth-flat,.is-unsure .l-question{display:inline}
 @media (prefers-reduced-motion:no-preference){
-.is-idle .nib-eye{animation:nib-blink 6s infinite}
-.is-thinking .nib-dots circle{animation:nib-bob .6s ease-in-out infinite alternate}
-.is-thinking .nib-dots circle:nth-child(2){animation-delay:.15s}
-.is-thinking .nib-dots circle:nth-child(3){animation-delay:.3s}
+.is-idle .nib-sprite,.is-listening .nib-sprite{animation:nib-bob 1.2s steps(1) infinite}
+.is-idle .l-eyes-open{animation:nib-blink-open 4.5s steps(1) infinite}
+.is-idle .l-eyes-closed{display:inline;animation:nib-blink-closed 4.5s steps(1) infinite}
+.is-thinking .l-dot-1{animation:nib-dot .9s steps(1) infinite}
+.is-thinking .l-dot-2{animation:nib-dot .9s steps(1) .3s infinite}
+.is-thinking .l-dot-3{animation:nib-dot .9s steps(1) .6s infinite}
+.is-answering .l-arms-wave{animation:nib-wave .5s steps(1) 4}
+.is-answering .l-arms-down{display:inline;animation:nib-wave-rest .5s steps(1) 4}
+.is-unsure .l-question{animation:nib-bob .8s steps(1) infinite}
 }
-@keyframes nib-blink{0%,96%,100%{transform:scaleY(1)}98%{transform:scaleY(.1)}}
-@keyframes nib-bob{to{transform:translateY(-1.5px)}}
+@keyframes nib-bob{0%{transform:translateY(0)}50%{transform:translateY(-1px)}}
+@keyframes nib-blink-open{0%{opacity:1}94%{opacity:0}97%{opacity:1}}
+@keyframes nib-blink-closed{0%{opacity:0}94%{opacity:1}97%{opacity:0}}
+@keyframes nib-dot{0%{opacity:.25}33%{opacity:1}66%{opacity:.25}}
+@keyframes nib-wave{0%{opacity:1}50%{opacity:0}}
+@keyframes nib-wave-rest{0%{opacity:0}50%{opacity:1}}
 .nib-bubble{max-width:240px;padding:8px 10px;border:1px solid var(--notible-border);border-radius:10px;background:var(--notible-surface);font-size:12px}
 .nib-panel{width:min(320px,40vw);max-height:min(400px,60vh);display:grid;grid-template-rows:auto minmax(0,1fr) auto;border:1px solid var(--notible-border);border-radius:10px;background:var(--notible-surface)}
 .nib-head{display:flex;align-items:center;gap:8px;padding:4px 6px 4px 8px;border-bottom:1px solid var(--notible-border);height:36px}
@@ -350,7 +422,7 @@ export default {
   manifest: {
     id: "notible.nib",
     name: "Nib",
-    version: "0.1.0",
+    version: "0.2.0",
     apiVersion: "1.22",
     permissions: ["workspace.ui"],
   },

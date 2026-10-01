@@ -1,6 +1,6 @@
 # Nib
 
-A small pen nib in the bottom-left corner of Notible. Click it (or press
+A little pixel-art fella in the bottom-left corner of Notible. Click him (or press
 **Ctrl+Shift+H** when you are not typing in a note) and ask how something works.
 
 Nib answers only from what your copy of Notible has: its Help pages and the guides
