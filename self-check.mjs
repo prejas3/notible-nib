@@ -135,4 +135,19 @@ if (live) {
   ok(!declared.includes('"mod+shift+h"'), "Core does not reserve mod+shift+h (live)");
 }
 
+// The sprite: every mood draws the paper body inside the 24×24 grid, and "reduce motion" means no motion.
+{
+  const colours = { ink: "#111", muted: "#555", accent: "#22f", surface: "#fff", paper: "#fefefe", shade: "#ccc", face: "#000", cheek: "#f99", pencil: "#fb3" };
+  const recorder = () => { const calls = []; const ctx = { canvas: { width: 72, height: 72 }, fillStyle: "", clearRect() {}, fillRect(x, y, w, h) { calls.push([this.fillStyle, x, y, w, h].join()); } }; return { ctx, calls }; };
+  for (const mood of engine.MOODS) {
+    const a = recorder();
+    engine.drawNib(a.ctx, mood, 1234, colours, false);
+    ok(a.calls.some((call) => call.startsWith("#fefefe,")), `sprite: ${mood} draws the paper body`);
+    ok(a.calls.every((call) => { const [, x, y, w] = call.split(",").map(Number); return x >= 0 && x + w <= 72 && y >= -6 && y < 72; }), `sprite: ${mood} stays on the canvas`);
+    const s1 = recorder(); const s2 = recorder();
+    engine.drawNib(s1.ctx, mood, 0, colours, true);
+    engine.drawNib(s2.ctx, mood, 98765, colours, true);
+    ok(s1.calls.join("|") === s2.calls.join("|"), `sprite: ${mood} is still with reduce motion`);
+  }
+}
 console.log(`Nib self-check passed: ${checks} checks${live ? " (live Help)" : ""}.`);

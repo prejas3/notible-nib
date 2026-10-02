@@ -280,112 +280,177 @@ export function ask(index, question) {
 // ---------- UI ----------
 
 /**
- * The fella: pixel art on a 19×23 grid, one <rect> per run of pixels, drawn
- * crisp. A gold pen-nib body with eyes, a breather hole and a slit; layers
- * (eyes, mouth, arms, dots, "?") are shown per mood by NIB_CSS, and every
- * animation is stepped, frame by frame, like a sprite.
+ * The fella: a folded note with a face, drawn on a 24×24 pixel grid into a
+ * canvas (the character study: https://claude.ai/artifact/Sy8PJcCLqAfQSfW4Nq5tdh).
+ * Seven moods; every motion is stepped frame by frame, like a sprite, and
+ * "reduce motion" freezes them. Outline colours follow the theme; the face
+ * stays dark because the paper stays light in both themes.
  */
-const BODY = [
-  ".....ooooo.....",
-  "....ohhgggo....",
-  "...ohggggggo...",
-  "..ohggggggggo..",
-  "..ogggggggggo..",
-  "..ogggggggggo..",
-  "..ogggggggggo..",
-  "..ogggggggggo..",
-  "..ogggggggggo..",
-  "..oggggoggggo..",
-  "...ogggogggo...",
-  "...ogggogggo...",
-  "....oggoggo....",
-  ".....ogogo.....",
-  "......ooo......",
-  ".......o.......",
-];
-const OX = 2;
-const OY = 5;
-/** [x, y, colour] in body coordinates; colours: o outline, p pupil, w white, m mouth, d dot, q accent. */
-const LAYERS = {
-  "eyes-open": [[3, 4, "w"], [4, 4, "p"], [3, 5, "p"], [4, 5, "p"], [9, 4, "w"], [10, 4, "p"], [9, 5, "p"], [10, 5, "p"]],
-  "eyes-closed": [[3, 5, "p"], [4, 5, "p"], [9, 5, "p"], [10, 5, "p"]],
-  "eyes-up": [[3, 4, "p"], [4, 4, "p"], [3, 5, "w"], [4, 5, "w"], [9, 4, "p"], [10, 4, "p"], [9, 5, "w"], [10, 5, "w"]],
-  "eyes-happy": [[3, 5, "p"], [4, 4, "p"], [5, 5, "p"], [8, 5, "p"], [9, 4, "p"], [10, 5, "p"]],
-  "eyes-side": [[3, 4, "p"], [3, 5, "p"], [4, 4, "w"], [4, 5, "w"], [9, 4, "p"], [9, 5, "p"], [10, 4, "w"], [10, 5, "w"]],
-  "mouth-smile": [[5, 7, "m"], [6, 8, "m"], [7, 8, "m"], [8, 8, "m"], [9, 7, "m"]],
-  "mouth-o": [[6, 7, "m"], [7, 7, "m"], [8, 7, "m"], [6, 8, "m"], [7, 8, "m"], [8, 8, "m"]],
-  "mouth-flat": [[6, 8, "m"], [7, 8, "m"], [8, 8, "m"]],
-  "arms-down": [[1, 8, "o"], [0, 9, "o"], [0, 10, "g"], [13, 8, "o"], [14, 9, "o"], [14, 10, "g"]],
-  "arms-wave": [[1, 8, "o"], [0, 9, "o"], [0, 10, "g"], [13, 7, "o"], [14, 6, "o"], [14, 5, "g"]],
-  "feet": [[5, 15, "o"], [4, 16, "o"], [5, 16, "o"], [9, 15, "o"], [9, 16, "o"], [10, 16, "o"]],
-  "dot-1": [[12, -1, "d"]],
-  "dot-2": [[14, -2, "d"]],
-  "dot-3": [[16, -3, "d"]],
-  "question": [[12, -5, "q"], [13, -5, "q"], [14, -5, "q"], [14, -4, "q"], [13, -3, "q"], [13, -1, "q"]],
-};
-// The outline follows the theme (light on Midnight, or he disappears); pupils stay dark.
-const PIXEL_COLOURS = { o: "var(--nib-ink, #2a2438)", p: "#2a2438", g: "#e8b23f", h: "#f8dc8a", w: "#ffffff", m: "#8c4b1d", d: "#8f8aa6", q: "var(--notible-accent, #5b6cf0)" };
+export const MOODS = ["idle", "listening", "thinking", "working", "answering", "unsure", "sleeping", "unlocked"];
 
-function runs(pixels) {
-  // Merge horizontal neighbours of one colour into a single rect.
-  const sorted = [...pixels].sort((a, b) => a[1] - b[1] || a[0] - b[0]);
-  const out = [];
-  for (const [x, y, colour] of sorted) {
-    const last = out[out.length - 1];
-    if (last && last.y === y && last.colour === colour && last.x + last.w === x) last.w += 1;
-    else out.push({ x, y, w: 1, colour });
+/** Draws one frame. ctx is a 2D context, t is milliseconds, c the colours, still=true freezes motion. */
+export function drawNib(ctx, mood, t, c, still = false) {
+  const size = ctx.canvas.width / 24;
+  ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+  const px = (x, y, w = 1, h = 1, colour = c.ink) => { ctx.fillStyle = colour; ctx.fillRect(Math.round(x * size), Math.round(y * size), Math.ceil(w * size), Math.ceil(h * size)); };
+  const move = still ? 0 : 1;
+  const state = mood === "listening" ? "idle" : mood;
+  let dy = 0;
+  if (state === "idle" || state === "thinking") dy = (Math.floor(t / 600) % 2) * move;
+  if (state === "sleeping") dy = (Math.floor(t / 1100) % 2) * move;
+  if (state === "unlocked") dy = move ? [0, -2, -3, -2, 0, 0][Math.floor(t / 110) % 6] : 0;
+  if (state === "working") dy = (Math.floor(t / 180) % 2) * move;
+
+  // Feet stay on the ground while the body jumps.
+  const feetUp = state === "unlocked" && dy < 0 ? -1 : 0;
+  px(8, 21 + feetUp, 2, 1); px(14, 21 + feetUp, 2, 1);
+
+  // Body: a note with a folded top-right corner and two ruled lines.
+  const top = 4 + dy;
+  px(5, top, 11, 1); px(4, top + 1, 1, 15); px(19, top + 4, 1, 12); px(5, top + 16, 14, 1);
+  px(16, top + 1, 1, 1); px(17, top + 2, 1, 1); px(18, top + 3, 1, 1);
+  px(5, top + 1, 11, 15, c.paper); px(16, top + 4, 3, 12, c.paper);
+  px(16, top + 2, 1, 2, c.paper); px(17, top + 3, 1, 1, c.paper);
+  px(16, top + 1, 1, 3, c.shade); px(17, top + 3, 2, 1, c.shade);
+  px(16, top + 1, 1, 1); px(16, top + 4, 3, 1);
+  for (const line of [top + 12, top + 14]) px(7, line, 10, 1, c.shade);
+
+  // Eyes.
+  const blink = state === "idle" && move && Math.floor(t / 150) % 22 === 0;
+  let eye = { dx: 0, dy: 0, shape: "open" };
+  if (state === "thinking") eye = { dx: 1, dy: -1, shape: "open" };
+  if (state === "working") eye = { dx: 0, dy: 1, shape: "open" };
+  if (state === "sleeping" || blink) eye.shape = "closed";
+  if (state === "unlocked") eye.shape = "happy";
+  if (state === "unsure") eye.shape = "small";
+  for (const ex of [8, 13]) {
+    const x = ex + eye.dx;
+    const y = top + 6 + eye.dy;
+    if (eye.shape === "open") px(x, y, 2, 2, c.face);
+    if (eye.shape === "small") px(x + 0.5, y + 0.5, 1, 1, c.face);
+    if (eye.shape === "closed") px(x, y + 1, 2, 1, c.face);
+    if (eye.shape === "happy") { px(x, y + 1, 1, 1, c.face); px(x + 1, y, 1, 1, c.face); px(x + 2, y + 1, 1, 1, c.face); }
   }
-  return out.map((run) => `<rect x="${run.x + OX}" y="${run.y + OY}" width="${run.w}" height="1" fill="${PIXEL_COLOURS[run.colour]}"/>`).join("");
+  px(7, top + 9, 1, 1, c.cheek); px(16, top + 9, 1, 1, c.cheek);
+
+  // Mouth.
+  const mouthY = top + 10;
+  if (state === "answering") px(11, mouthY, 2, move && Math.floor(t / 160) % 2 ? 2 : 1, c.face);
+  else if (state === "unsure") { px(10, mouthY, 1, 1, c.face); px(11, mouthY + 0.5, 1, 1, c.face); px(12, mouthY, 1, 1, c.face); px(13, mouthY + 0.5, 1, 1, c.face); }
+  else if (state === "unlocked") { px(10, mouthY, 4, 1, c.face); px(11, mouthY + 1, 2, 1, c.face); }
+  else if (state === "sleeping") px(11, mouthY, 2, 1, c.shade);
+  else px(11, mouthY, 2, 1, c.face);
+
+  // Arms and props.
+  if (state === "thinking") { px(3, top + 10, 1, 2); px(13, mouthY + 2, 2, 1, c.face); px(15, mouthY + 1, 1, 1, c.face); }
+  else if (state === "unsure") { const up = move ? Math.floor(t / 400) % 2 : 1; px(2, top + 6 - up, 1, 3); px(21, top + 6 - up, 1, 3); px(3, top + 9 - up, 1, 1); px(20, top + 9 - up, 1, 1); }
+  else if (state === "unlocked") { px(2, top + 3, 1, 3); px(21, top + 3, 1, 3); }
+  else if (state === "working") {
+    // A scrap of paper and a pencil that scribbles on it.
+    px(13, 19, 8, 3, c.paper); px(13, 19, 8, 1, c.shade);
+    const reach = move ? Math.floor(t / 140) % 4 : 1;
+    const scribble = move ? Math.floor(t / 140) % 8 : 3;
+    for (let i = 0; i < scribble; i += 1) px(14 + (i % 6), 20 + (i % 2), 1, 1, c.muted);
+    px(15 + reach, 15, 1, 4, c.pencil); px(15 + reach, 19, 1, 1, c.face); px(14 + reach, 15, 1, 1, c.accent);
+    px(19, top + 11, 1, 1); px(20, top + 12, 1, 1);
+  } else { px(3, top + 11, 1, 3); px(20, top + 11, 1, 3); }
+
+  // Bubbles and effects.
+  if (state === "thinking") {
+    px(20, 3, 1, 1); px(21, 1, 1, 1);
+    const dots = move ? Math.floor(t / 350) % 4 : 3;
+    for (let i = 0; i < dots; i += 1) px(17 + i * 2, 0.5, 1, 1, c.accent);
+  }
+  if (state === "answering") {
+    px(18, 0, 6, 4, c.surface); px(18, 0, 6, 1); px(18, 3, 6, 1); px(18, 0, 1, 4); px(23, 0, 1, 4); px(19, 4, 1, 1);
+    const lines = move ? 1 + (Math.floor(t / 300) % 3) : 3;
+    for (let i = 0; i < Math.min(lines, 2); i += 1) px(19.5, 1.2 + i, 3 - i, 0.6, c.accent);
+  }
+  if (state === "unsure" && (!move || Math.floor(t / 500) % 2 === 0)) {
+    px(11, 0, 3, 1, c.accent); px(13, 1, 1, 1, c.accent); px(12, 2, 1, 1, c.accent); px(12, 3.5, 1, 1, c.accent);
+  }
+  if (state === "sleeping") {
+    const phase = move ? (t / 1400) % 1 : 0.4;
+    [[19, 4, 1], [20.5, 2, 1.4], [22, 0, 1.8]].forEach(([x, y, s], i) => {
+      if (phase <= i * 0.25) return;
+      const yy = y - phase * 1.5;
+      px(x, yy, s, 0.4, c.muted); px(x + s - 0.4, yy, 0.4, s * 0.6, c.muted); px(x, yy + s * 0.6, s, 0.4, c.muted);
+    });
+  }
+  if (state === "unlocked") {
+    const phase = move ? Math.floor(t / 180) % 4 : 1;
+    [[1, 2], [21, 1], [0, 12], [22, 13], [2, 20], [21, 20]].forEach(([x, y], i) => {
+      if ((i + phase) % 2 === 0) { px(x, y + 1, 3, 1, c.accent); px(x + 1, y, 1, 3, c.accent); }
+    });
+  }
 }
 
-function bodyPixels() {
-  const pixels = [];
-  BODY.forEach((row, y) => [...row].forEach((cell, x) => { if (cell !== ".") pixels.push([x, y, cell]); }));
-  return pixels;
+/** Colours from the running theme; the paper and the face are fixed so the face reads in both themes. */
+function themeColours(element) {
+  const css = getComputedStyle(element);
+  const read = (name, fallback) => css.getPropertyValue(name).trim() || fallback;
+  const dark = document.documentElement.getAttribute("data-notible-mode") === "dark";
+  return {
+    ink: read("--notible-text", dark ? "#e8ecf4" : "#18202e"),
+    muted: read("--notible-muted", "#5b6577"),
+    accent: read("--notible-accent", "#2e6be6"),
+    surface: read("--notible-surface", dark ? "#171d28" : "#ffffff"),
+    paper: dark ? "#f1f3f8" : "#ffffff",
+    shade: dark ? "#aab4c8" : "#d8deea",
+    face: "#18202e",
+    cheek: dark ? "#f08c9a" : "#f3a6b0",
+    pencil: "#f2b233",
+  };
 }
 
-export const NIB_SVG = `<svg viewBox="0 0 19 23" aria-hidden="true" class="nib-face" shape-rendering="crispEdges"><g class="nib-sprite"><g class="l-body">${runs(bodyPixels())}</g>${Object.entries(LAYERS).map(([name, pixels]) => `<g class="l-${name}">${runs(pixels)}</g>`).join("")}</g></svg>`;
+/**
+ * One timer for every Nib canvas on screen, 10 frames a second (every step in
+ * drawNib is 110 ms or longer). It stops when no canvas is connected and skips
+ * frames while the corner is hidden or the window is in the background.
+ */
+const sprites = new Set();
+let spriteTimer = 0;
+function tick() {
+  const now = performance.now();
+  const still = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+  for (const sprite of sprites) {
+    if (!sprite.canvas.isConnected) { sprites.delete(sprite); continue; }
+    if (document.hidden || sprite.canvas.getClientRects().length === 0) continue;
+    drawNib(sprite.ctx, sprite.mood(), now, themeColours(sprite.canvas), still);
+  }
+  if (!sprites.size) { window.clearInterval(spriteTimer); spriteTimer = 0; }
+}
+
+/** A canvas showing Nib at `cssSize` px; mood() is read on every frame. */
+export function nibSprite(cssSize, mood) {
+  const canvas = document.createElement("canvas");
+  canvas.className = "nib-face";
+  canvas.setAttribute("aria-hidden", "true");
+  const scale = Math.max(1, Math.round(window.devicePixelRatio || 1));
+  canvas.width = canvas.height = cssSize * scale;
+  canvas.style.width = canvas.style.height = `${cssSize}px`;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return canvas;
+  ctx.imageSmoothingEnabled = false;
+  sprites.add({ canvas, ctx, mood });
+  if (!spriteTimer) spriteTimer = window.setInterval(tick, 100);
+  // First frame now, so it never flashes empty.
+  queueMicrotask(tick);
+  return canvas;
+}
 
 export const NIB_CSS = `
-.nib{--nib-ink:#2a2438}
-:root[data-notible-mode="dark"] .nib{--nib-ink:#efe2c4}
 .nib{font-family:var(--notible-font-sans,inherit);font-size:13px;color:var(--notible-text);display:grid;gap:8px;justify-items:start}
 .nib *{box-sizing:border-box}
 .nib button{font:inherit;color:inherit;min-height:28px;cursor:pointer}
 .nib button:focus-visible,.nib input:focus-visible{outline:2px solid var(--notible-accent);outline-offset:-2px}
-.nib-wake{width:57px;height:69px;padding:0;border:0;border-radius:8px;background:transparent}
-.nib-wake:hover .nib-sprite{transform:translateY(-1px)}
-.nib-face{width:100%;height:100%;display:block;image-rendering:pixelated;overflow:visible}
-.nib-face [class^="l-"]{display:none}
-.nib-face .l-body,.nib-face .l-feet,.nib-face .l-eyes-open,.nib-face .l-mouth-smile,.nib-face .l-arms-down{display:inline}
-.is-listening .l-mouth-smile{display:none}.is-listening .l-mouth-o{display:inline}
-.is-thinking .l-eyes-open,.is-thinking .l-mouth-smile{display:none}
-.is-thinking .l-eyes-up,.is-thinking .l-mouth-flat,.is-thinking .l-dot-1,.is-thinking .l-dot-2,.is-thinking .l-dot-3{display:inline}
-.is-answering .l-eyes-open,.is-answering .l-arms-down{display:none}
-.is-answering .l-eyes-happy,.is-answering .l-arms-wave{display:inline}
-.is-unsure .l-eyes-open,.is-unsure .l-mouth-smile{display:none}
-.is-unsure .l-eyes-side,.is-unsure .l-mouth-flat,.is-unsure .l-question{display:inline}
-@media (prefers-reduced-motion:no-preference){
-.is-idle .nib-sprite,.is-listening .nib-sprite{animation:nib-bob 1.2s steps(1) infinite}
-.is-idle .l-eyes-open{animation:nib-blink-open 4.5s steps(1) infinite}
-.is-idle .l-eyes-closed{display:inline;animation:nib-blink-closed 4.5s steps(1) infinite}
-.is-thinking .l-dot-1{animation:nib-dot .9s steps(1) infinite}
-.is-thinking .l-dot-2{animation:nib-dot .9s steps(1) .3s infinite}
-.is-thinking .l-dot-3{animation:nib-dot .9s steps(1) .6s infinite}
-.is-answering .l-arms-wave{animation:nib-wave .5s steps(1) 4}
-.is-answering .l-arms-down{display:inline;animation:nib-wave-rest .5s steps(1) 4}
-.is-unsure .l-question{animation:nib-bob .8s steps(1) infinite}
-}
-@keyframes nib-bob{0%{transform:translateY(0)}50%{transform:translateY(-1px)}}
-@keyframes nib-blink-open{0%{opacity:1}94%{opacity:0}97%{opacity:1}}
-@keyframes nib-blink-closed{0%{opacity:0}94%{opacity:1}97%{opacity:0}}
-@keyframes nib-dot{0%{opacity:.25}33%{opacity:1}66%{opacity:.25}}
-@keyframes nib-wave{0%{opacity:1}50%{opacity:0}}
-@keyframes nib-wave-rest{0%{opacity:0}50%{opacity:1}}
+.nib-wake{width:72px;height:72px;padding:0;border:0;border-radius:8px;background:transparent}
+.nib-wake:hover .nib-face{transform:translateY(-1px)}
+.nib-face{display:block;image-rendering:pixelated}
 .nib-bubble{max-width:240px;padding:8px 10px;border:1px solid var(--notible-border);border-radius:10px;background:var(--notible-surface);font-size:12px}
 .nib-panel{width:min(320px,40vw);max-height:min(400px,60vh);display:grid;grid-template-rows:auto minmax(0,1fr) auto;border:1px solid var(--notible-border);border-radius:10px;background:var(--notible-surface)}
 .nib-head{display:flex;align-items:center;gap:8px;padding:4px 6px 4px 8px;border-bottom:1px solid var(--notible-border);height:36px}
-.nib-head .nib-mini{width:28px;height:28px}
+.nib-head .nib-mini{width:24px;height:24px}
 .nib-head strong{flex:1}
 .nib-close{border:0;background:transparent;width:28px;border-radius:6px}
 .nib-close:hover{background:var(--notible-hover)}
@@ -422,7 +487,7 @@ export default {
   manifest: {
     id: "notible.nib",
     name: "Nib",
-    version: "0.2.0",
+    version: "0.2.1",
     apiVersion: "1.22",
     permissions: ["workspace.ui"],
   },
@@ -487,8 +552,23 @@ export default {
         const onPointerDown = () => { if (!root.contains(document.activeElement)) ui.returnTo = document.activeElement; };
         root.addEventListener("pointerdown", onPointerDown, true);
 
-        function setMood(mood) {
-          root.className = `nib is-${mood}`;
+        // What the fella shows: the mood render() picked, a short-lived one
+        // (working, unlocked) on top, and sleep after 20 s alone in the corner.
+        let mood = "idle";
+        let flash = "";
+        let flashUntil = 0;
+        let lastActive = performance.now();
+        function setMood(next) {
+          mood = next;
+          lastActive = performance.now();
+          root.className = `nib is-${next}`;
+        }
+        function flashMood(next, ms) { flash = next; flashUntil = performance.now() + ms; lastActive = performance.now(); }
+        function face() {
+          const now = performance.now();
+          if (now < flashUntil) return flash;
+          if (mood === "idle" && !state.open && now - lastActive > 20_000) return "sleeping";
+          return mood;
         }
 
         function close() {
@@ -521,6 +601,7 @@ export default {
         }
 
         function navigate(promise) {
+          flashMood("working", 600);
           void Promise.resolve(promise).catch(() => announce(t("One moment, then try again.")));
         }
 
@@ -627,8 +708,8 @@ export default {
           window.clearTimeout(introTimer);
           root.replaceChildren();
           const last = state.last;
-          const mood = thinking ? "thinking" : !state.open ? "idle" : !last ? "listening" : last.mode === "answer" ? "answering" : last.mode === "related" || last.mode === "dontknow" ? "unsure" : "idle";
-          setMood(mood);
+          const next = thinking ? "thinking" : !state.open ? "idle" : !last ? "listening" : last.mode === "answer" ? "answering" : last.mode === "related" || last.mode === "dontknow" ? "unsure" : "idle";
+          setMood(next);
           if (!state.open) {
             if (!context.storage.get("introSeen")) {
               const bubble = node("p", "nib-bubble", t("Hi, I'm Nib. Ask me how Notible works."));
@@ -645,7 +726,7 @@ export default {
             wake.setAttribute("aria-expanded", "false");
             wake.setAttribute("aria-controls", "nib-panel");
             wake.title = t("Ask Nib (Ctrl+Shift+H)");
-            wake.innerHTML = NIB_SVG;
+            wake.append(nibSprite(72, face));
             wake.addEventListener("click", () => { state.open = true; render(); focusInput(); });
             root.append(wake);
             return;
@@ -656,7 +737,7 @@ export default {
           panel.setAttribute("aria-label", t("Nib, Notible helper"));
           const head = node("div", "nib-head");
           const mini = node("span", "nib-mini");
-          mini.innerHTML = NIB_SVG;
+          mini.append(nibSprite(24, face));
           const close = action("×", () => closePanel(), "nib-close");
           close.setAttribute("aria-label", t("Close"));
           head.append(mini, node("strong", "", "Nib"), close);
@@ -710,7 +791,13 @@ export default {
 
         // Re-answer after "Turn on": the topic may now be enabled.
         let rebuild = 0;
+        // A plugin turned on brings new pages: a little jump for the new knowledge.
+        const owners = () => new Set(context.help.topics().filter((topic) => topic.pluginId && (topic.state ?? "enabled") === "enabled").map((topic) => topic.pluginId)).size;
+        let known = owners();
         const subscription = context.help.onChange(() => {
+          const now = owners();
+          if (now > known && state.open) flashMood("unlocked", 2400);
+          known = now;
           window.clearTimeout(rebuild);
           rebuild = window.setTimeout(() => {
             const before = state.last;
