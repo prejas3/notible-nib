@@ -1,7 +1,7 @@
 # Nib
 
 A little pixel-art fella in the bottom-left corner of Notible. Click him (or press
-**Ctrl+Shift+H** when you are not typing in a note) and ask how something works.
+**Ctrl+Shift+H**, even while typing in a note) and ask how something works.
 
 Nib answers only from what your copy of Notible has: its Help pages and the guides
 of plugins that are turned on. If a feature belongs to a built-in plugin that is off,

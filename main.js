@@ -487,7 +487,7 @@ export default {
   manifest: {
     id: "notible.nib",
     name: "Nib",
-    version: "0.2.1",
+    version: "0.2.2",
     apiVersion: "1.22",
     permissions: ["workspace.ui"],
   },
@@ -518,6 +518,8 @@ export default {
       name: "Ask Nib",
       description: "Open Nib's question box.",
       hotkey: "Mod+Shift+H",
+      // Also mid-sentence in a note (API 1.23; an older Core ignores it and keeps the shortcut out of fields).
+      whileTyping: true,
       execute: () => {
         if (!state.ui) {
           context.ui.notice(t("Nib isn't the corner helper. Choose it in Settings → Plugins → Corner helper."));
